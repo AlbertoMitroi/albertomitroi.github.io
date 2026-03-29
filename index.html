@@ -6,12 +6,34 @@
   <title>Mitroi Alberto Ionut | .NET Full-Stack Developer</title>
   <meta name="description" content="Portfolio and resume for Mitroi Alberto Ionut — .NET Full-Stack Developer focused on Azure, event-driven systems, and modern web applications." />
   <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="shortcut icon" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <noscript>
+    <style>
+      body.is-loading .site-header,
+      body.is-loading main,
+      body.is-loading .site-footer {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .app-loader { display: none !important; }
+    </style>
+  </noscript>
 </head>
-<body>
+<body class="is-loading">
+  <div class="app-loader" id="appLoader" role="status" aria-live="polite">
+    <div class="app-loader-shell">
+      <img id="appLoaderAvatar" class="app-loader-avatar" src="assets/profile.jpg" alt="Profile photo" />
+      <p id="appLoaderName" class="app-loader-name">Alberto Mitroi</p>
+      <p class="app-loader-note">Preparing portfolio…</p>
+    </div>
+  </div>
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="#top">
@@ -192,7 +214,10 @@
 
   <footer class="site-footer">
     <div class="container footer-shell">
-      <p>Built for recruiters to quickly validate production-grade .NET, Azure, and AI delivery.</p>
+      <p class="footer-copy">
+        Built for recruiters to quickly validate production-grade .NET, Azure, and AI delivery.
+        <span id="siteLastUpdated" class="footer-last-updated"></span>
+      </p>
       <button class="btn btn-secondary" id="downloadPdfFooter">Download PDF</button>
     </div>
   </footer>

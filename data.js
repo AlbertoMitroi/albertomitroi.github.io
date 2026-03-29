@@ -11,6 +11,10 @@ window.cvData = {
     image: "assets/profile.jpg",
     website: "https://www.topzonal.ro"
   },
+  siteMeta: {
+    siteUrl: "https://albertomitroi.github.io/",
+    lastUpdated: "March 2026"
+  },
   heroFacts: [
     "2+ years in production",
     "Azure & AI Certified",

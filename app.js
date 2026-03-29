@@ -20,6 +20,74 @@
     return el;
   }
 
+  function initAppLoader() {
+    const loaderName = qs("#appLoaderName");
+    const loaderAvatar = qs("#appLoaderAvatar");
+    if (loaderName) loaderName.textContent = data.personal.preferredName || data.personal.name;
+    if (loaderAvatar) {
+      loaderAvatar.src = data.personal.image;
+      loaderAvatar.alt = `${data.personal.name} profile photo`;
+    }
+  }
+
+  function initSiteMeta() {
+    const lastUpdatedEl = qs("#siteLastUpdated");
+    if (!lastUpdatedEl) return;
+
+    const siteUrl = data.siteMeta?.siteUrl || "https://albertomitroi.github.io/";
+    const lastUpdated = data.siteMeta?.lastUpdated || "";
+    const displayUrl = String(siteUrl).replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+    lastUpdatedEl.textContent = "";
+    const label = createEl("span", "", lastUpdated ? `Last updated: ${lastUpdated}` : "Last updated recently");
+    const separator = createEl("span", "footer-separator", "·");
+    const link = createEl("a", "footer-source-link", displayUrl);
+    link.href = siteUrl;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    lastUpdatedEl.append(label, separator, link);
+  }
+
+  function getResumeLastUpdatedLabel() {
+    const fromData = String(data.siteMeta?.lastUpdated || "").trim();
+    if (fromData) return fromData;
+    return new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  }
+
+  function getResumeFilenameSuffix() {
+    return getResumeLastUpdatedLabel().replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "");
+  }
+
+  function waitForImageReady(image) {
+    if (!image) return Promise.resolve();
+    if (typeof image.decode === "function") {
+      return image.decode().catch(() => {});
+    }
+    if (image.complete) return Promise.resolve();
+    return new Promise((resolve) => {
+      image.addEventListener("load", resolve, { once: true });
+      image.addEventListener("error", resolve, { once: true });
+    });
+  }
+
+  async function waitForAssetsReady() {
+    const images = Array.from(document.images || []);
+    await Promise.all(images.map((image) => waitForImageReady(image)));
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+  }
+
+  async function revealPageWhenReady() {
+    const loader = qs("#appLoader");
+    await waitForAssetsReady();
+    document.body.classList.remove("is-loading");
+    document.body.classList.add("is-ready");
+    if (loader) {
+      loader.setAttribute("aria-hidden", "true");
+    }
+  }
+
   function safeLink(url) {
     return typeof url === "string" && url.trim().length > 0;
   }
@@ -475,6 +543,20 @@
     const certifications = qs("#certificationsList");
     data.certifications.forEach((cert) => {
       const item = createEl("article", "stack-item cert-card");
+      const certStatus = String(cert.status || "").toLowerCase();
+      const isAchieved = certStatus === "achieved";
+      const isInProgress = certStatus === "in progress";
+      const defaultMetaValues = new Set(["credential achieved", "in progress"]);
+      const metaValue = String(cert.meta || "").trim();
+      const normalizedMetaValue = metaValue.toLowerCase();
+      let metaRowText = cert.issuer;
+      if (isAchieved && cert.credentialId) {
+        metaRowText = `Credential ID: ${cert.credentialId}`;
+      } else if (isInProgress) {
+        metaRowText = "In progress";
+      } else if (metaValue && !defaultMetaValues.has(normalizedMetaValue)) {
+        metaRowText = `${cert.issuer} · ${metaValue}`;
+      }
 
       const top = createEl("div", "cert-top");
       const brand = createEl("div", "cert-brand");
@@ -486,10 +568,21 @@
       brand.appendChild(createEl("span", "cert-brand-text", "Microsoft Certified"));
       top.appendChild(brand);
 
-      if (cert.status) {
+      const topRight = createEl("div", "cert-top-right");
+      if (isAchieved) {
+        const viewUrl = safeLink(cert.url) ? cert.url : cert.badge;
+        if (safeLink(viewUrl)) {
+          const action = createEl("a", "btn btn-secondary cert-action cert-action--top", "Show certification");
+          action.href = viewUrl;
+          action.target = "_blank";
+          action.rel = "noreferrer";
+          topRight.appendChild(action);
+        }
+      } else if (cert.status && !isInProgress) {
         const statusClass = cert.status.toLowerCase().replace(/\s+/g, "-");
-        top.appendChild(createEl("span", `cert-status cert-status--${statusClass}`, cert.status));
+        topRight.appendChild(createEl("span", `cert-status cert-status--${statusClass}`, cert.status));
       }
+      top.appendChild(topRight);
 
       const body = createEl("div", "cert-body");
       if (cert.badge) {
@@ -501,19 +594,8 @@
 
       const info = createEl("div", "cert-info");
       info.appendChild(createEl("h4", "", cert.title));
-      info.appendChild(createEl("div", "meta-row", `${cert.issuer} · ${cert.meta}`));
-      if (cert.credentialId) info.appendChild(createEl("div", "cert-credential-id", `Credential ID: ${cert.credentialId}`));
-      if (cert.note) info.appendChild(createEl("p", "", cert.note));
-      if (String(cert.status || "").toLowerCase() === "achieved") {
-        const viewUrl = safeLink(cert.url) ? cert.url : cert.badge;
-        if (safeLink(viewUrl)) {
-          const action = createEl("a", "btn btn-secondary cert-action", "Show credential");
-          action.href = viewUrl;
-          action.target = "_blank";
-          action.rel = "noreferrer";
-          info.appendChild(action);
-        }
-      }
+      info.appendChild(createEl("div", "meta-row", metaRowText));
+      if (cert.note) info.appendChild(createEl("p", "cert-note", cert.note));
 
       body.appendChild(info);
       item.append(top, body);
@@ -593,104 +675,215 @@
   }
 
   function renderResumeMarkup() {
+    const profileIconMap = {
+      github: "assets/github-142-svgrepo-com.svg",
+      linkedin: "assets/linkedin-svgrepo-com.svg",
+      topzonal: "assets/topzonal-logo.png"
+    };
     const profileLinks = data.links.map((item) => {
-      if (safeLink(item.url)) return `<a href="${item.url}" target="_blank" rel="noreferrer">${item.label}: ${item.value}</a>`;
-      return `<span>${item.label}: ${item.value}</span>`;
+      const iconPath = profileIconMap[String(item.label || "").toLowerCase()] || "";
+      const iconMarkup = iconPath ? `<img class="resume-link-icon" src="${iconPath}" alt="" aria-hidden="true" />` : "";
+      if (safeLink(item.url)) {
+        return `<a class="resume-link-pill" href="${item.url}" target="_blank" rel="noreferrer">${iconMarkup}<span>${item.label}: ${item.value}</span></a>`;
+      }
+      return `<span class="resume-link-pill">${iconMarkup}<span>${item.label}: ${item.value}</span></span>`;
+    }).join("");
+    const displayUrl = (url) => String(url || "").replace(/^https?:\/\//, "").replace(/\/$/, "");
+    const pdfSiteUrl = data.siteMeta?.siteUrl || "https://albertomitroi.github.io/";
+    const pdfLastUpdated = getResumeLastUpdatedLabel();
+    const generatedLabel = pdfLastUpdated
+      ? `Last updated: ${pdfLastUpdated} · View latest CV on`
+      : "View latest CV on";
+    const resumeGeneratedBar = `
+      <div class="resume-generated-bar">
+        <span>${generatedLabel}</span>
+        <a href="${pdfSiteUrl}" target="_blank" rel="noreferrer">${displayUrl(pdfSiteUrl)}</a>
+      </div>
+    `;
+    const resumeRoleBulletLimit = 4;
+    const resumeSkillItemLimit = 6;
+    const resumeContactItems = [
+      { text: data.personal.location, icon: "assets/location-pin-svgrepo-com.svg", href: "" },
+      { text: data.personal.phone, icon: "assets/phone-rounded-svgrepo-com.svg", href: `tel:${data.personal.phone.replace(/\s+/g, "")}` },
+      { text: data.personal.email, icon: "assets/gmail-svgrepo-com.svg", href: `mailto:${data.personal.email}` }
+    ];
+    const resumeContactHtml = resumeContactItems.map((item) => {
+      const icon = `<img class="resume-contact-icon" src="${item.icon}" alt="" aria-hidden="true" />`;
+      if (safeLink(item.href)) {
+        return `<a class="resume-contact-item" href="${item.href}">${icon}<span>${item.text}</span></a>`;
+      }
+      return `<span class="resume-contact-item">${icon}<span>${item.text}</span></span>`;
     }).join("");
 
-    const experienceHtml = data.experience.map((job) => `
-      <article class="resume-entry">
-        <div class="resume-entry-head">
-          <div>
-            <strong>${job.company}</strong>
-            <div class="resume-subline">${job.role}</div>
-            ${safeLink(job.website) ? `<div class="resume-small"><a href="${job.website}" target="_blank" rel="noreferrer">${job.website}</a></div>` : ""}
+    const groupedExperience = groupExperienceByCompany(data.experience);
+    const experienceHtml = groupedExperience.map((group) => {
+      const companyPeriod = buildCompanyPeriod(group.roles);
+      const companyDuration = buildCompanyDuration(group.roles);
+      const companyMeta = [companyPeriod, companyDuration].filter(Boolean).join(" · ");
+      const companyLocations = [...new Set(group.roles.map((role) => role.location).filter(Boolean))];
+      const companyLocation = companyLocations.join(" · ");
+      const roleHtml = group.roles.map((role) => `
+        <div class="resume-role-block">
+          <div class="resume-role-head">
+            <strong>${role.role}</strong>
+            <span class="resume-small">${role.period}</span>
           </div>
-          <div class="resume-small" style="text-align:right">
-            <div><strong>${job.period}</strong></div>
-            <div>${job.location}</div>
-          </div>
+          <p>${role.intro}</p>
+          <ul>${role.bullets.slice(0, resumeRoleBulletLimit).map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
         </div>
-        <div class="resume-summary" style="margin-top:6px"><p>${job.intro}</p></div>
-        <ul>${job.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
-      </article>
-    `).join("");
+      `).join("");
+
+      return `
+        <article class="resume-entry">
+          <div class="resume-entry-head">
+            <div class="resume-heading-brand">
+              ${group.companyLogo ? `<img class="resume-inline-logo resume-inline-logo--company" src="${group.companyLogo}" alt="${group.company} logo" />` : ""}
+              <div>
+                <strong>${group.company}</strong>
+                <div class="resume-subline">${companyMeta}</div>
+                ${safeLink(group.website) ? `<div class="resume-small"><a href="${group.website}" target="_blank" rel="noreferrer">${displayUrl(group.website)}</a></div>` : ""}
+              </div>
+            </div>
+            <div class="resume-small resume-right">${companyLocation}</div>
+          </div>
+          ${roleHtml}
+        </article>
+      `;
+    }).join("");
 
     const projectHtml = data.projects.map((project) => `
       <article class="resume-project">
         <div class="resume-project-head">
-          <div>
-            <strong>${project.name}</strong>
-            ${safeLink(project.url) ? `<div class="resume-small"><a href="${project.url}" target="_blank" rel="noreferrer">${project.url}</a></div>` : ""}
+          <div class="resume-heading-brand">
+            ${project.logo ? `<img class="resume-inline-logo resume-inline-logo--project" src="${project.logo}" alt="${project.name} logo" />` : ""}
+            <div>
+              <strong>${project.name}</strong>
+              ${safeLink(project.url) ? `<div class="resume-small"><a href="${project.url}" target="_blank" rel="noreferrer">${displayUrl(project.url)}</a></div>` : ""}
+            </div>
           </div>
         </div>
-        <div class="resume-summary" style="margin-top:6px"><p>${project.summary}</p></div>
-        <ul>${project.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
-        <div class="resume-tags">${project.stack.join(", ")}</div>
+        <div class="resume-summary resume-summary--compact"><p>${project.summary}</p></div>
+        <ul>${project.bullets.slice(0, 3).map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+        <div class="resume-tags">${project.stack.slice(0, 10).join(" • ")}</div>
       </article>
     `).join("");
 
     const skillsHtml = data.skills.map((group) => `
       <div class="resume-skill-group">
         <strong>${group.title}</strong>
-        <div class="resume-skills-list">${group.items.join(", ")}</div>
+        <div class="resume-skills-list">${group.items.slice(0, resumeSkillItemLimit).join(" • ")}</div>
       </div>
     `).join("");
 
-    const certHtml = data.certifications.map((cert) => `
+    const certHtml = data.certifications.map((cert) => {
+      const certStatusClass = `resume-cert-status resume-cert-status--${String(cert.status || "").toLowerCase().replace(/\s+/g, "-")}`;
+      const certStatus = String(cert.status || "").toLowerCase();
+      const isAchieved = certStatus === "achieved";
+      const isInProgress = certStatus === "in progress";
+      const defaultMetaValues = new Set(["credential achieved", "in progress"]);
+      const metaValue = String(cert.meta || "").trim();
+      const normalizedMetaValue = metaValue.toLowerCase();
+      let metaLine = cert.issuer;
+      if (isAchieved && cert.credentialId) {
+        metaLine = `Credential ID: ${cert.credentialId}`;
+      } else if (isInProgress) {
+        metaLine = "In progress";
+      } else if (metaValue && !defaultMetaValues.has(normalizedMetaValue)) {
+        metaLine = `${cert.issuer} · ${metaValue}`;
+      }
+      return `
       <div class="resume-cert-row">
         <div class="resume-cert-head">
-          <div>
-            <strong>${cert.title}</strong>
-            <div class="resume-subline">${cert.issuer}</div>
+          <div class="resume-cert-core">
+            ${cert.badge ? `<img class="resume-inline-logo resume-inline-logo--badge" src="${cert.badge}" alt="${cert.title} badge" />` : ""}
+            <div class="resume-cert-main">
+              <div class="resume-cert-brand">
+                ${cert.brandLogo ? `<img class="resume-inline-logo resume-inline-logo--mini" src="${cert.brandLogo}" alt="${cert.issuer} logo" />` : ""}
+                <span>${cert.issuer}</span>
+              </div>
+              <strong>${cert.title}</strong>
+              <div class="resume-subline">${metaLine}</div>
+            </div>
           </div>
-          <div class="resume-small" style="text-align:right">${cert.meta}</div>
+          <div class="resume-small resume-right resume-cert-side">
+            ${isAchieved && safeLink(cert.url) ? `<a class="resume-credential-link resume-credential-link--top" href="${cert.url}" target="_blank" rel="noreferrer">Show certification</a>` : ""}
+            ${!isAchieved && !isInProgress && cert.status ? `<span class="${certStatusClass}">${cert.status}</span>` : ""}
+          </div>
         </div>
+        ${cert.note ? `<div class="resume-small resume-cert-note">${cert.note}</div>` : ""}
       </div>
+    `;
+    }).join("");
+    const additionalCertHtml = (data.additionalCertifications || []).map((cert) => `
+      <li class="resume-extra-cert-item">
+        <div class="resume-extra-cert-head">
+          ${cert.logo ? `<img class="resume-inline-logo resume-inline-logo--mini" src="${cert.logo}" alt="${cert.issuer} logo" />` : ""}
+          <div>
+            <strong>${cert.title}</strong> — ${cert.issuer} (${cert.issued})${cert.credentialId ? ` · Credential ID: ${cert.credentialId}` : ""}
+          </div>
+        </div>
+        ${safeLink(cert.url) ? `<a class="resume-credential-link resume-credential-link--small" href="${cert.url}" target="_blank" rel="noreferrer">Show credential</a>` : ""}
+      </li>
     `).join("");
 
-    const eduHtml = data.education.map((edu) => `
+    const renderEducationRow = (edu) => `
       <div class="resume-edu-row">
         <div class="resume-edu-head">
           <div>
             <strong>${edu.title}</strong>
             <div class="resume-subline">${edu.subtitle}</div>
-            ${safeLink(edu.url) ? `<div class="resume-small"><a href="${edu.url}" target="_blank" rel="noreferrer">${edu.url}</a></div>` : ""}
+            ${safeLink(edu.url) ? `<div class="resume-small"><a href="${edu.url}" target="_blank" rel="noreferrer">${displayUrl(edu.url)}</a></div>` : ""}
           </div>
-          <div class="resume-small" style="text-align:right">
+          <div class="resume-small resume-right">
             <div><strong>${edu.meta}</strong></div>
             <div>${edu.detail}</div>
           </div>
         </div>
       </div>
-    `).join("");
+    `;
+    const primaryEducation = (data.education && data.education.length) ? data.education[0] : null;
+    const primaryEducationHtml = primaryEducation
+      ? `<section class="resume-section resume-section--primary-education"><h2 class="resume-title">Education</h2>${renderEducationRow(primaryEducation)}</section>`
+      : "";
+    const resumeEndNote = `
+      <div class="resume-site-footer-note">
+        <span>This PDF is a snapshot generated in ${pdfLastUpdated || "the latest update cycle"}.</span>
+        <span>For the most up-to-date CV, complete project galleries, live certifications, and contact links, visit</span>
+        <a href="${pdfSiteUrl}" target="_blank" rel="noreferrer">${displayUrl(pdfSiteUrl)}</a>
+      </div>
+    `;
 
     return `
       <div class="resume-shell">
+        ${resumeGeneratedBar}
         <header class="resume-header">
           <div class="resume-photo"><img src="${data.personal.image}" alt="${data.personal.name} profile portrait" /></div>
           <div>
             <h1 class="resume-name">${data.personal.name}</h1>
             <p class="resume-role">${data.personal.role}</p>
-            <div class="resume-contact">
-              <span>${data.personal.location}</span>
-              <a href="tel:${data.personal.phone.replace(/\s+/g, "")}">${data.personal.phone}</a>
-              <a href="mailto:${data.personal.email}">${data.personal.email}</a>
-            </div>
+            <p class="resume-tagline">${data.personal.headline}</p>
+            <div class="resume-contact">${resumeContactHtml}</div>
             <div class="resume-profile-row">${profileLinks}</div>
+            <div class="resume-facts">${data.heroFacts.map((fact) => `<span class="resume-fact">${fact}</span>`).join("")}</div>
           </div>
         </header>
 
         <section class="resume-section">
-          <h2 class="resume-title">Summary</h2>
+          <h2 class="resume-title">Professional Summary</h2>
           <div class="resume-summary">${data.summary.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
+          <div class="resume-keyline">${(data.aboutHighlights || []).slice(0, 4).join(" • ")}</div>
         </section>
 
         <section class="resume-section"><h2 class="resume-title">Experience</h2>${experienceHtml}</section>
-        <section class="resume-section"><h2 class="resume-title">Certifications</h2>${certHtml}</section>
-        <section class="resume-section"><h2 class="resume-title">Projects</h2>${projectHtml}</section>
-        <section class="resume-section"><h2 class="resume-title">Skills</h2>${skillsHtml}</section>
-        <section class="resume-section"><h2 class="resume-title">Education</h2>${eduHtml}</section>
+        ${primaryEducationHtml}
+        <section class="resume-section resume-section--projects">${resumeGeneratedBar}<h2 class="resume-title">Projects</h2>${projectHtml}</section>
+        <section class="resume-section">
+          <h2 class="resume-title">Certifications</h2>
+          ${certHtml}
+          ${additionalCertHtml ? `<div class="resume-cert-subtitle">Additional AI Certifications</div><ul class="resume-extra-certs">${additionalCertHtml}</ul>` : ""}
+        </section>
+        <section class="resume-section"><h2 class="resume-title">Core Skills</h2><div class="resume-skills-grid">${skillsHtml}</div></section>
+        ${resumeEndNote}
       </div>
     `;
   }
@@ -702,13 +895,19 @@
   async function downloadPdf() {
     initResume();
     const element = qs("#resumePdfRoot");
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const pdfFilenameSuffix = getResumeFilenameSuffix();
+
     const opt = {
       margin: 0,
-      filename: "Mitroi_Alberto_Ionut_CV.pdf",
+      filename: `CV_AlbertoMitroi_${pdfFilenameSuffix}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+      html2canvas: { scale: 2.2, useCORS: true, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      pagebreak: { mode: ["css", "legacy"] }
+      pagebreak: {
+        mode: ["css", "legacy"],
+        avoid: [".resume-entry", ".resume-project", ".resume-skill-group", ".resume-cert-row", ".resume-edu-row"]
+      }
     };
 
     try {
@@ -924,19 +1123,31 @@
     headings.forEach((heading) => observer.observe(heading));
   }
 
-  function init() {
-    initHero();
-    initAbout();
-    initExperience();
-    initProjects();
-    initSkills();
-    initSidebarSections();
-    initResume();
-    bindActions();
-    initMobileMenu();
-    initNavigation();
-    initSectionHeadingReveal();
+  async function init() {
+    document.body.classList.add("is-loading");
+    initAppLoader();
+
+    try {
+      initSiteMeta();
+      initHero();
+      initAbout();
+      initExperience();
+      initProjects();
+      initSkills();
+      initSidebarSections();
+      initResume();
+      bindActions();
+      initMobileMenu();
+      initNavigation();
+      initSectionHeadingReveal();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      await revealPageWhenReady();
+    }
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", () => {
+    void init();
+  });
 })();
