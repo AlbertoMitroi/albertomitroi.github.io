@@ -8,7 +8,7 @@ window.cvData = {
     workMode: "Hybrid / Remote-ready",
     phone: "+40 745 915 532",
     email: "mitroialbertoionut@gmail.com",
-    image: "assets/profile.jpg",
+    image: "assets/profile.webp",
     website: "https://www.topzonal.ro"
   },
   siteMeta: {
@@ -93,7 +93,7 @@ window.cvData = {
   projects: [
     {
       name: "TopZonal.ro",
-      logo: "assets/topzonal-logo.png",
+      logo: "assets/topzonal-logo.webp",
       url: "https://www.topzonal.ro",
       summary: "A next-generation web/mobile platform connecting homeowners with local professionals, designed with a mobile-first dashboard and product-focused UX.",
       gallery: [
@@ -203,7 +203,7 @@ window.cvData = {
       issuer: "Vanderbilt University",
       issued: "Jul 2025",
       credentialId: "XPD00TAIAME4",
-      logo: "assets/Vanderbilt_University_logo_transparent.png",
+      logo: "assets/Vanderbilt_University_logo_transparent.webp",
       url: "https://www.coursera.org/account/accomplishments/verify/XPD00TAIAME4"
     },
     {

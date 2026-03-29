@@ -1093,20 +1093,36 @@ body.project-gallery-open { overflow: hidden; }
   height: 12px;
   border-radius: 4px;
 }
-.resume-cert-main { min-width: 0; }
+.resume-cert-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
 .resume-cert-core {
   display: inline-flex;
   align-items: flex-start;
   gap: 7px;
 }
+.resume-cert-title-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.resume-cert-title-row strong {
+  font-size: 11.2px;
+  line-height: 1.2;
+}
 .resume-cert-brand {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-bottom: 2px;
+  margin-bottom: 0;
   color: #30456e;
   font-size: 9.2px;
   font-weight: 700;
+  white-space: nowrap;
 }
 .resume-subline { color: #3d4a63; }
 .resume-small { color: #4d5972; font-size: 9.45px; }
@@ -1597,8 +1613,6 @@ body.project-gallery-open { overflow: hidden; }
     margin: 0 !important;
     padding: 0 !important;
     background: #fff !important;
-    width: 210mm !important;      
-    min-width: 210mm !important;  
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -1613,8 +1627,9 @@ body.project-gallery-open { overflow: hidden; }
     position: static !important;
     left: auto !important;
     top: auto !important;
-    width: 210mm !important;      
-    min-width: 210mm !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
     opacity: 1 !important;
     pointer-events: auto !important;
     display: block !important;
@@ -1623,8 +1638,8 @@ body.project-gallery-open { overflow: hidden; }
 
   #resumePdfRoot {
     display: block !important;
-    width: 210mm !important;       
-    min-width: 210mm !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
     position: static !important;
     opacity: 1 !important;
     visibility: visible !important;

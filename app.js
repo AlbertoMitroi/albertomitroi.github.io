@@ -27,6 +27,9 @@
     if (loaderAvatar) {
       loaderAvatar.src = data.personal.image;
       loaderAvatar.alt = `${data.personal.name} profile photo`;
+      loaderAvatar.loading = "eager";
+      loaderAvatar.decoding = "async";
+      loaderAvatar.setAttribute("fetchpriority", "high");
     }
   }
 
@@ -67,8 +70,11 @@
   }
 
   async function waitForAssetsReady() {
-    const images = Array.from(document.images || []);
-    await Promise.all(images.map((image) => waitForImageReady(image)));
+    const criticalImageSelectors = ["#appLoaderAvatar", "#brandAvatar", "#heroImage"];
+    const criticalImages = criticalImageSelectors
+      .map((selector) => qs(selector))
+      .filter(Boolean);
+    await Promise.all(criticalImages.map((image) => waitForImageReady(image)));
     if (document.fonts && document.fonts.ready) {
       await document.fonts.ready;
     }
@@ -109,13 +115,20 @@
 
   function initHero() {
     qs("#brandName").textContent = data.personal.preferredName;
-    qs("#brandAvatar").src = data.personal.image;
-    qs("#brandAvatar").alt = `${data.personal.name} profile photo`;
+    const brandAvatar = qs("#brandAvatar");
+    brandAvatar.src = data.personal.image;
+    brandAvatar.alt = `${data.personal.name} profile photo`;
+    brandAvatar.loading = "eager";
+    brandAvatar.decoding = "async";
     qs("#heroName").textContent = data.personal.name;
     qs("#heroRole").textContent = data.personal.role;
     qs("#heroLead").textContent = data.personal.headline;
-    qs("#heroImage").src = data.personal.image;
-    qs("#heroImage").alt = `${data.personal.name} profile portrait`;
+    const heroImage = qs("#heroImage");
+    heroImage.src = data.personal.image;
+    heroImage.alt = `${data.personal.name} profile portrait`;
+    heroImage.loading = "eager";
+    heroImage.decoding = "async";
+    heroImage.setAttribute("fetchpriority", "high");
 
     const meta = qs("#heroMeta");
     const metaItems = [
@@ -135,7 +148,7 @@
     const socialIcons = {
       github: "assets/github-142-svgrepo-com.svg",
       linkedin: "assets/linkedin-svgrepo-com.svg",
-      topzonal: "assets/topzonal-logo.png"
+      topzonal: "assets/topzonal-logo.webp"
     };
 
     data.links.forEach((item) => {
@@ -268,6 +281,8 @@
         const logo = createEl("img", "timeline-company-logo");
         logo.src = group.companyLogo;
         logo.alt = `${group.company} logo`;
+        logo.loading = "lazy";
+        logo.decoding = "async";
         companyHead.appendChild(logo);
       }
       const companyText = createEl("div", "timeline-company-text");
@@ -407,6 +422,7 @@
 
     const image = createEl("img", "project-gallery-image");
     image.alt = "";
+    image.decoding = "async";
 
     const next = createEl("button", "project-gallery-nav project-gallery-nav--next", "›");
     next.type = "button";
@@ -450,6 +466,8 @@
     const mainImage = createEl("img", "project-gallery-main-image");
     mainImage.src = images[0].src;
     mainImage.alt = images[0].alt;
+    mainImage.loading = "lazy";
+    mainImage.decoding = "async";
     main.appendChild(mainImage);
     const countBadge = createEl("span", "project-gallery-count", `${images.length} photos`);
     const extraPhotos = Math.max(0, images.length - 1);
@@ -468,6 +486,8 @@
       const thumbImage = createEl("img", "project-gallery-thumb-image");
       thumbImage.src = image.src;
       thumbImage.alt = image.alt;
+      thumbImage.loading = "lazy";
+      thumbImage.decoding = "async";
       thumb.appendChild(thumbImage);
 
       if (index === 2 && images.length > 3) {
@@ -499,6 +519,8 @@
         const logo = createEl("img", "project-title-logo");
         logo.src = project.logo;
         logo.alt = `${project.name} logo`;
+        logo.loading = "lazy";
+        logo.decoding = "async";
         titleWrap.appendChild(logo);
       }
       const title = createEl("h4", "project-title", project.name);
@@ -560,6 +582,8 @@
       brandLogo.src = cert.brandLogo || "assets/microsoft-svgrepo-com.svg";
       brandLogo.alt = "";
       brandLogo.setAttribute("aria-hidden", "true");
+      brandLogo.loading = "lazy";
+      brandLogo.decoding = "async";
       brand.appendChild(brandLogo);
       brand.appendChild(createEl("span", "cert-brand-text", "Microsoft Certified"));
       top.appendChild(brand);
@@ -585,6 +609,8 @@
         const badge = createEl("img", "cert-badge");
         badge.src = cert.badge;
         badge.alt = `${cert.title} badge`;
+        badge.loading = "lazy";
+        badge.decoding = "async";
         body.appendChild(badge);
       }
 
@@ -608,6 +634,8 @@
           const logo = createEl("img", "micro-cert-logo");
           logo.src = cert.logo;
           logo.alt = `${cert.issuer} logo`;
+          logo.loading = "lazy";
+          logo.decoding = "async";
           head.appendChild(logo);
         }
         head.appendChild(createEl("h4", "", cert.title));
@@ -674,7 +702,7 @@
     const profileIconMap = {
       github: "assets/github-142-svgrepo-com.svg",
       linkedin: "assets/linkedin-svgrepo-com.svg",
-      topzonal: "assets/topzonal-logo.png"
+      topzonal: "assets/topzonal-logo.webp"
     };
     const profileLinks = data.links.map((item) => {
       const iconPath = profileIconMap[String(item.label || "").toLowerCase()] || "";
@@ -793,11 +821,13 @@
           <div class="resume-cert-core">
             ${cert.badge ? `<img class="resume-inline-logo resume-inline-logo--badge" src="${cert.badge}" alt="${cert.title} badge" />` : ""}
             <div class="resume-cert-main">
-              <div class="resume-cert-brand">
-                ${cert.brandLogo ? `<img class="resume-inline-logo resume-inline-logo--mini" src="${cert.brandLogo}" alt="${cert.issuer} logo" />` : ""}
-                <span>${cert.issuer}</span>
+              <div class="resume-cert-title-row">
+                <div class="resume-cert-brand">
+                  ${cert.brandLogo ? `<img class="resume-inline-logo resume-inline-logo--mini" src="${cert.brandLogo}" alt="${cert.issuer} logo" />` : ""}
+                  <span>${cert.issuer}</span>
+                </div>
+                <strong>${cert.title}</strong>
               </div>
-              <strong>${cert.title}</strong>
               <div class="resume-subline">${metaLine}</div>
             </div>
           </div>
@@ -888,23 +918,18 @@
     qs("#resumePdfRoot").innerHTML = renderResumeMarkup();
   }
 
-  async function downloadPdf() {
-    initResume();
-    if (document.fonts && document.fonts.ready) await document.fonts.ready;
-    const resumeEl = qs("#resumePdfRoot");
-    if (resumeEl) {
-      await Promise.all(
-        Array.from(resumeEl.querySelectorAll("img")).map((image) => waitForImageReady(image))
-      );
-    }
-    await new Promise((resolve) => setTimeout(resolve, 150));
-    window.print();
-  }
-
   function bindActions() {
     ["#downloadPdfHeader", "#downloadPdfHero", "#downloadPdfFooter"].forEach((selector) => {
       const button = qs(selector);
-      if (button) button.addEventListener("click", downloadPdf);
+      if (!button) return;
+      button.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = "assets/CV_AlbertoMitroi.pdf";
+        link.download = "CV_AlbertoMitroi.pdf";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
     });
   }
 

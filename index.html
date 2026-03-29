@@ -12,7 +12,8 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/profile.webp" type="image/webp" />
   <link rel="stylesheet" href="styles.css" />
   <noscript>
     <style>
@@ -29,7 +30,7 @@
 <body class="is-loading">
   <div class="app-loader" id="appLoader" role="status" aria-live="polite">
     <div class="app-loader-shell">
-      <img id="appLoaderAvatar" class="app-loader-avatar" src="assets/profile.jpg" alt="Profile photo" />
+      <img id="appLoaderAvatar" class="app-loader-avatar" src="assets/profile.webp" alt="Profile photo" fetchpriority="high" />
       <p id="appLoaderName" class="app-loader-name">Alberto Mitroi</p>
       <p class="app-loader-note">Preparing portfolio…</p>
     </div>
@@ -37,7 +38,7 @@
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="#top">
-        <img id="brandAvatar" class="brand-avatar" src="assets/profile.jpg" alt="Profile photo" />
+        <img id="brandAvatar" class="brand-avatar" src="assets/profile.webp" alt="Profile photo" />
         <span id="brandName">Portfolio</span>
       </a>
       <nav class="main-nav" id="mainNav">
@@ -89,7 +90,7 @@
 
         <div class="hero-card">
           <div class="portrait-shell">
-            <img id="heroImage" src="assets/profile.jpg" alt="Profile portrait" />
+            <img id="heroImage" src="assets/profile.webp" alt="Profile portrait" fetchpriority="high" />
           </div>
           <div class="hero-facts" id="heroFacts"></div>
         </div>
@@ -120,31 +121,31 @@
         <div class="section-heading section-heading--cert">
           <div class="section-brand-row" aria-hidden="true">
             <span class="section-brand-pill">
-              <img src="assets/microsoft-svgrepo-com.svg" alt="" />
+              <img src="assets/microsoft-svgrepo-com.svg" alt="" loading="lazy" decoding="async" />
               <span>Microsoft</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/azure-svgrepo-com.svg" alt="" />
+              <img src="assets/azure-svgrepo-com.svg" alt="" loading="lazy" decoding="async" />
               <span>Azure</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/dlai-logo-square.png" alt="" />
+              <img src="assets/dlai-logo-square.png" alt="" loading="lazy" decoding="async" />
               <span>DeepLearning.AI</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/Vanderbilt_University_logo_transparent.png" alt="" />
+              <img src="assets/Vanderbilt_University_logo_transparent.webp" alt="" loading="lazy" decoding="async" />
               <span>Vanderbilt</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/Coursera-Logo.png" alt="" />
+              <img src="assets/Coursera-Logo.png" alt="" loading="lazy" decoding="async" />
               <span>Coursera</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/ibm_logo_icon_170000.png" alt="" />
+              <img src="assets/ibm_logo_icon_170000.png" alt="" loading="lazy" decoding="async" />
               <span>IBM</span>
             </span>
             <span class="section-brand-pill">
-              <img src="assets/Amazon-Web-Services-AWS-Logo.png" alt="" />
+              <img src="assets/Amazon-Web-Services-AWS-Logo.png" alt="" loading="lazy" decoding="async" />
               <span>AWS</span>
             </span>
           </div>
