@@ -54,10 +54,6 @@
     return new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
   }
 
-  function getResumeFilenameSuffix() {
-    return getResumeLastUpdatedLabel().replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "");
-  }
-
   function waitForImageReady(image) {
     if (!image) return Promise.resolve();
     if (typeof image.decode === "function") {
@@ -894,32 +890,15 @@
 
   async function downloadPdf() {
     initResume();
-    const element = qs("#resumePdfRoot");
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
-    const pdfFilenameSuffix = getResumeFilenameSuffix();
-
-    const opt = {
-      margin: 0,
-      filename: `CV_AlbertoMitroi_${pdfFilenameSuffix}.pdf`,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2.2, useCORS: true, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      pagebreak: {
-        mode: ["css", "legacy"],
-        avoid: [".resume-entry", ".resume-project", ".resume-skill-group", ".resume-cert-row", ".resume-edu-row"]
-      }
-    };
-
-    try {
-      if (window.html2pdf) {
-        await window.html2pdf().set(opt).from(element).save();
-      } else {
-        window.print();
-      }
-    } catch (error) {
-      console.error(error);
-      window.print();
+    const resumeEl = qs("#resumePdfRoot");
+    if (resumeEl) {
+      await Promise.all(
+        Array.from(resumeEl.querySelectorAll("img")).map((image) => waitForImageReady(image))
+      );
     }
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    window.print();
   }
 
   function bindActions() {

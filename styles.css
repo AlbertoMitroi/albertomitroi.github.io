@@ -1579,11 +1579,94 @@ body.project-gallery-open { overflow: hidden; }
     height: 36px;
   }
 }
-@page { size: A4; margin: 12mm; }
+@page { size: A4 portrait; margin: 0; }
 @media print {
-  body { background: #fff; }
-  .site-header, main, .site-footer { display: none !important; }
-  .project-gallery-modal { display: none !important; }
-  .resume-canvas-wrap { position: static; width: auto; opacity: 1; }
-  .resume-canvas { width: auto; min-height: auto; padding: 0; }
+  .app-loader,
+  .site-header,
+  main,
+  .site-footer,
+  .project-gallery-modal {
+    display: none !important;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.js-enhanced .section-heading {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .resume-canvas-wrap {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  #resumePdfRoot {
+    display: block !important;
+    width: 100% !important;
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  .resume-shell {
+    padding-bottom: 0 !important;
+  }
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .resume-entry,
+  .resume-project,
+  .resume-skill-group,
+  .resume-cert-row,
+  .resume-edu-row {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .resume-role-block {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .resume-header {
+    break-inside: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .resume-title {
+    break-after: avoid !important;
+  }
+
+  .resume-section--projects {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  .resume-site-footer-note {
+    position: static !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    max-width: 100% !important;
+    margin-top: 3mm !important;
+  }
 }
