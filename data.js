@@ -3,7 +3,7 @@ window.cvData = {
     name: "Mitroi Alberto Ionut",
     preferredName: "Alberto Mitroi",
     role: ".NET Full-Stack Developer",
-    headline: "Microsoft Azure and AI Certified engineer delivering scalable, cloud-native .NET systems and event-driven architecture, while building high-impact product experiences with React, Next.js, or Angular.",
+    headline: "Microsoft Azure and AI Certified .NET engineer delivering scalable, cloud-native systems and event-driven architecture, while building high-impact product experiences with React, Next.js, and Angular.",
     location: "Craiova, Romania",
     workMode: "Hybrid / Remote-ready",
     phone: "+40 745 915 532",
@@ -13,13 +13,13 @@ window.cvData = {
   },
   heroFacts: [
     "2+ years in production",
-    "Microsoft Azure Certified",
+    "Azure & AI Certified",
     "Event-driven systems",
     "React / Next.js / Angular"
   ],
   summary: [
     ".NET Full-Stack Developer with 2+ years in production and Azure + AI certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, clean service boundaries, and production-ready AI integration patterns.",
-    "I build and ship end-to-end products with .NET and Azure at the core, paired with modern React, Next.js, or Angular interfaces. My delivery workflow includes CI/CD, observability, and containerized deployments through Azure DevOps, GitHub Actions, and Docker."
+    "I build and ship end-to-end products with .NET and Azure at the core, paired with modern React, Next.js, and Angular interfaces. My delivery workflow includes CI/CD, observability, and containerized deployments through Azure DevOps, GitHub Actions, and Docker."
   ],
   aboutHighlights: [
     ".NET-first cloud delivery on Azure",
@@ -30,8 +30,8 @@ window.cvData = {
   focusAreas: [
     { title: ".NET & API Engineering", text: "Resilient ASP.NET Core APIs with clear boundaries, validation, and testability." },
     { title: "Event-Driven Architecture", text: "DDD, CQRS, MediatR, and microservices messaging workflows with Kafka and RabbitMQ, designed for reliability and growth." },
-    { title: ".NET + Azure Delivery", text: "Production delivery of .NET microservices on Azure using App Service, Azure SQL, Blob Storage, Application Insights, Kafka/RabbitMQ integration, and CI/CD pipelines." },
-    { title: "Modern Product Frontend", text: "React, Next.js, or Angular with TypeScript and UX-focused interfaces connected to strong backend foundations." }
+    { title: ".NET + Azure + AI Delivery", text: "Production delivery of .NET microservices on Azure using App Service, Azure SQL, Blob Storage, Application Insights, Kafka/RabbitMQ integration, AI-enabled features, and CI/CD pipelines." },
+    { title: "Modern Product Frontend", text: "React, Next.js, and Angular with TypeScript and UX-focused interfaces connected to strong backend foundations." }
   ],
   links: [
     { label: "GitHub", value: "AlbertoMitroi", url: "https://github.com/AlbertoMitroi" },
@@ -208,7 +208,7 @@ window.cvData = {
       issued: "Jul 2025",
       credentialId: "K8AQJKM2E9GY",
       logo: "assets/ibm_logo_icon_170000.png",
-      url: "https://www.coursera.org/account/accomplishments/badge/zx9M1u5zTxqfTNbuc88a5w"
+      url: "https://www.coursera.org/account/accomplishments/verify/K8AQJKM2E9GY"
     },
     {
       title: "Generative AI with Large Language Models",
