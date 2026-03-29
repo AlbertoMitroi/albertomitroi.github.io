@@ -39,7 +39,7 @@ window.cvData = {
   ],
   links: [
     { label: "GitHub", value: "AlbertoMitroi", url: "https://github.com/AlbertoMitroi" },
-    { label: "LinkedIn", value: "Alberto Mitroi", url: "" },
+    { label: "LinkedIn", value: "Alberto Mitroi", url: "https://www.linkedin.com/in/mitroialberto/" },
     { label: "TopZonal", value: "topzonal.ro", url: "https://www.topzonal.ro" }
   ],
   experience: [
