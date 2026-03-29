@@ -897,22 +897,12 @@
     const element = qs("#resumePdfRoot");
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
     const pdfFilenameSuffix = getResumeFilenameSuffix();
-    const isMobileViewport = window.matchMedia("(max-width: 980px)").matches;
-    document.body.classList.add("pdf-export-mode");
 
     const opt = {
       margin: 0,
       filename: `CV_AlbertoMitroi_${pdfFilenameSuffix}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: {
-        scale: isMobileViewport ? 1.8 : 2.2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        scrollX: 0,
-        scrollY: 0,
-        windowWidth: 1440,
-        windowHeight: 2400
-      },
+      html2canvas: { scale: 2.2, useCORS: true, backgroundColor: "#ffffff", scrollX: 0, scrollY: 0 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       pagebreak: {
         mode: ["css", "legacy"],
@@ -921,13 +911,14 @@
     };
 
     try {
-      if (!window.html2pdf) throw new Error("html2pdf is not available");
-      await window.html2pdf().set(opt).from(element).save();
+      if (window.html2pdf) {
+        await window.html2pdf().set(opt).from(element).save();
+      } else {
+        window.print();
+      }
     } catch (error) {
       console.error(error);
-      window.alert("PDF export failed on this attempt. Please retry once after the page fully loads.");
-    } finally {
-      document.body.classList.remove("pdf-export-mode");
+      window.print();
     }
   }
 
