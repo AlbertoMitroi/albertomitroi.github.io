@@ -3,7 +3,7 @@ window.cvData = {
     name: "Mitroi Alberto Ionut",
     preferredName: "Alberto Mitroi",
     role: ".NET Full-Stack Developer",
-    headline: "Microsoft Azure Certified engineer delivering scalable, cloud-native .NET systems and event-driven architecture, while building high-impact product experiences with React, Next.js, or Angular.",
+    headline: "Microsoft Azure and AI Certified engineer delivering scalable, cloud-native .NET systems and event-driven architecture, while building high-impact product experiences with React, Next.js, or Angular.",
     location: "Craiova, Romania",
     workMode: "Hybrid / Remote-ready",
     phone: "+40 745 915 532",
@@ -18,12 +18,12 @@ window.cvData = {
     "React / Next.js / Angular"
   ],
   summary: [
-    ".NET Full-Stack Developer with 2+ years in production and Azure certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, and clean service boundaries for long-term scale.",
+    ".NET Full-Stack Developer with 2+ years in production and Azure + AI certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, clean service boundaries, and production-ready AI integration patterns.",
     "I build and ship end-to-end products with .NET and Azure at the core, paired with modern React, Next.js, or Angular interfaces. My delivery workflow includes CI/CD, observability, and containerized deployments through Azure DevOps, GitHub Actions, and Docker."
   ],
   aboutHighlights: [
     ".NET-first cloud delivery on Azure",
-    "Azure-certified production readiness",
+    "Azure and AI-certified production readiness",
     "DDD, CQRS, and clean architecture",
     "CI/CD and observability mindset"
   ],
@@ -125,11 +125,36 @@ window.cvData = {
     }
   ],
   skills: [
-    { title: ".NET & Backend Development", items: [".NET", "C#", "ASP.NET Core", "Web API", "Microservices", "Entity Framework Core", "LINQ", "Dependency Injection", "xUnit", "FluentValidation", "RabbitMQ", "Kafka", "Redis"] },
-    { title: "Frontend Development", items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"] },
-    { title: "Cloud & DevOps (Azure)", items: ["Azure App Service", "Azure SQL", "Blob Storage", "Application Insights", "Azure DevOps", "CI/CD Pipelines", "Git", "Azure OpenAI", "Docker"] },
-    { title: "Database Management", items: ["Microsoft SQL Server", "Database Modeling", "Migrations", "SQL Performance"] },
-    { title: "Architecture & Design Patterns", items: ["Domain-Driven Design (DDD)", "Clean Architecture", "CQRS", "MediatR", "SOLID Principles", "Design Patterns", "Event-Driven Architecture"] }
+    {
+      title: ".NET Backend & API Engineering",
+      summary: "Production backend delivery focused on maintainable services, testability, and clear service boundaries.",
+      items: [".NET 8", "C#", "ASP.NET Core", "Web API", "Microservices", "Entity Framework Core", "LINQ", "Dependency Injection", "FluentValidation", "xUnit"]
+    },
+    {
+      title: "Distributed & Event-Driven Systems",
+      summary: "Reliable async workflows and communication patterns for scalable, multi-service platforms.",
+      items: ["Kafka", "RabbitMQ", "Azure Service Bus", "Event-Driven Architecture", "Event Sourcing", "Marten (PostgreSQL)", "Elasticsearch", "Redis", "BPMN Workflows"]
+    },
+    {
+      title: "Azure Cloud & DevOps Delivery",
+      summary: "End-to-end Azure implementation with release automation, observability, and cloud-native operations.",
+      items: ["Azure App Service", "Azure Container Apps", "Azure SQL", "Blob Storage", "Azure Key Vault", "Application Insights", "Azure DevOps", "GitHub Actions", "CI/CD Pipelines", "Docker", "Git"]
+    },
+    {
+      title: "AI & LLM Product Integration",
+      summary: "Applied AI capabilities for real product use cases, prompt workflows, and production-oriented integration.",
+      items: ["Azure OpenAI", "Generative AI Integration", "Prompt Engineering", "LLM Workflows", "AI-assisted Product Features", "AI Production Readiness"]
+    },
+    {
+      title: "Frontend & Product Interfaces",
+      summary: "Modern product-facing interfaces connected to strong backend systems and practical UX execution.",
+      items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "JavaScript", "HTML5", "CSS3", "tRPC", "Prisma ORM", "Framer Motion", "PWA"]
+    },
+    {
+      title: "Architecture, Data & Quality",
+      summary: "Strong engineering fundamentals across design, persistence, and delivery quality in production teams.",
+      items: ["Domain-Driven Design (DDD)", "CQRS", "Clean Architecture", "Vertical Slice Architecture", "MediatR", "SOLID Principles", "Microsoft SQL Server", "Database Modeling", "Migrations", "SQL Performance", "Observability", "Agile / Scrum"]
+    }
   ],
   certifications: [
     {
@@ -209,11 +234,36 @@ window.cvData = {
       meta: "Sept 2022 – Expected Jul 2026",
       detail: "Bachelor of Science in Computer Science",
       url: "https://ace.ucv.ro/"
+    },
+    {
+      title: "Stefan Odobleja National College",
+      subtitle: "Mathematics-Informatics · Intensive Informatics",
+      meta: "Sept 2018 – Jul 2022",
+      detail: "High School Diploma",
+      url: "https://www.stefanodoblejacraiova.ro/"
     }
   ],
   contactCards: [
-    { title: "Email", value: "mitroialbertoionut@gmail.com", url: "mailto:mitroialbertoionut@gmail.com" },
-    { title: "Phone", value: "+40 745 915 532", url: "tel:+40745915532" },
-    { title: "GitHub", value: "github.com/AlbertoMitroi", url: "https://github.com/AlbertoMitroi" }
+    {
+      title: "Email",
+      value: "mitroialbertoionut@gmail.com",
+      url: "mailto:mitroialbertoionut@gmail.com",
+      icon: "assets/gmail-svgrepo-com.svg",
+      note: "Best channel for role opportunities"
+    },
+    {
+      title: "Phone",
+      value: "+40 745 915 532",
+      url: "tel:+40745915532",
+      icon: "assets/phone-rounded-svgrepo-com.svg",
+      note: "Available for interviews and quick calls"
+    },
+    {
+      title: "GitHub",
+      value: "github.com/AlbertoMitroi",
+      url: "https://github.com/AlbertoMitroi",
+      icon: "assets/github-142-svgrepo-com.svg",
+      note: "Code samples and architecture projects"
+    }
   ]
 };

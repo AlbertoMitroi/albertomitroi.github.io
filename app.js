@@ -457,6 +457,7 @@
     data.skills.forEach((group) => {
       const card = createEl("article", "skill-card");
       card.appendChild(createEl("h4", "", group.title));
+      if (group.summary) card.appendChild(createEl("p", "skill-summary", group.summary));
       const ul = createEl("ul", "skill-list");
       group.items.forEach((item) => ul.appendChild(createEl("li", "", item)));
       card.appendChild(ul);
@@ -555,12 +556,31 @@
     });
 
     const contacts = qs("#contactActions");
+    const contactIconFallback = {
+      email: "assets/gmail-svgrepo-com.svg",
+      phone: "assets/phone-rounded-svgrepo-com.svg",
+      github: "assets/github-142-svgrepo-com.svg"
+    };
     data.contactCards.forEach((entry) => {
       const a = createEl("a", "contact-action");
       a.href = entry.url;
       a.target = entry.url.startsWith("http") ? "_blank" : "_self";
       if (entry.url.startsWith("http")) a.rel = "noreferrer";
-      a.innerHTML = `<strong>${entry.title}</strong><span>${entry.value}</span>`;
+
+      const iconWrap = createEl("span", "contact-icon-wrap");
+      const icon = createEl("img", "contact-icon");
+      const fallbackKey = String(entry.title || "").toLowerCase();
+      icon.src = entry.icon || contactIconFallback[fallbackKey] || "";
+      icon.alt = "";
+      icon.setAttribute("aria-hidden", "true");
+      iconWrap.appendChild(icon);
+
+      const textWrap = createEl("span", "contact-text-wrap");
+      textWrap.appendChild(createEl("strong", "", entry.title));
+      textWrap.appendChild(createEl("span", "contact-value", entry.value));
+      if (entry.note) textWrap.appendChild(createEl("span", "contact-note", entry.note));
+
+      a.append(iconWrap, textWrap);
       contacts.appendChild(a);
     });
   }
