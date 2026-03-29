@@ -93,10 +93,14 @@ window.cvData = {
       url: "https://www.topzonal.ro",
       summary: "A next-generation web/mobile platform connecting homeowners with local professionals, designed with a mobile-first dashboard and product-focused UX.",
       gallery: [
-        { src: "assets/topzonal-logo.png", alt: "TopZonal brand preview" },
-        { src: "assets/azure-svgrepo-com.svg", alt: "TopZonal Azure infrastructure highlight" },
-        { src: "assets/microsoft-svgrepo-com.svg", alt: "TopZonal Microsoft ecosystem highlight" },
-        { src: "assets/github-142-svgrepo-com.svg", alt: "TopZonal engineering and delivery preview" }
+        { src: "assets/projects/topzonal/topzonal-01.png", alt: "TopZonal platform screenshot 1" },
+        { src: "assets/projects/topzonal/topzonal-02.png", alt: "TopZonal platform screenshot 2" },
+        { src: "assets/projects/topzonal/topzonal-03.png", alt: "TopZonal platform screenshot 3" },
+        { src: "assets/projects/topzonal/topzonal-04.png", alt: "TopZonal platform screenshot 4" },
+        { src: "assets/projects/topzonal/topzonal-05.png", alt: "TopZonal platform screenshot 5" },
+        { src: "assets/projects/topzonal/topzonal-06.png", alt: "TopZonal platform screenshot 6" },
+        { src: "assets/projects/topzonal/topzonal-07.png", alt: "TopZonal platform screenshot 7" },
+        { src: "assets/projects/topzonal/topzonal-08.png", alt: "TopZonal platform screenshot 8" }
       ],
       bullets: [
         "Built the frontend with React and Next.js using the T3 stack and a scalable monorepo structure.",
@@ -111,10 +115,13 @@ window.cvData = {
       url: "https://github.com/AlbertoMitroi/EShopMicroservices",
       summary: "A microservices-based e-commerce project built with .NET 8 and C# 12 to demonstrate modern software architecture, maintainability, and cloud-native deployment patterns.",
       gallery: [
-        { src: "assets/github-142-svgrepo-com.svg", alt: "EShopMicroservices repository preview" },
-        { src: "assets/microsoft-svgrepo-com.svg", alt: "EShopMicroservices Microsoft ecosystem preview" },
-        { src: "assets/azure-svgrepo-com.svg", alt: "EShopMicroservices Azure deployment preview" },
-        { src: "assets/az-204.png", alt: "EShopMicroservices cloud delivery perspective" }
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-01.png", alt: "EShopMicroservices screenshot 1" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-02.png", alt: "EShopMicroservices screenshot 2" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-03.png", alt: "EShopMicroservices screenshot 3" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-04.png", alt: "EShopMicroservices screenshot 4" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-05.png", alt: "EShopMicroservices screenshot 5" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-06.png", alt: "EShopMicroservices screenshot 6" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-07.png", alt: "EShopMicroservices screenshot 7" }
       ],
       bullets: [
         "Applied Domain-Driven Design (DDD), CQRS, Clean Architecture, and Vertical Slice principles.",
@@ -164,7 +171,8 @@ window.cvData = {
       status: "Achieved",
       brandLogo: "assets/microsoft-svgrepo-com.svg",
       badge: "assets/az-204.png",
-      url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
+      credentialId: "42EFC399D66B1E5C",
+      url: "https://learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c?ref=https%3A%2F%2Fwww.linkedin.com%2F",
       note: "Verified Azure development expertise across compute, storage, security, monitoring, and cloud-native application lifecycle."
     },
     {

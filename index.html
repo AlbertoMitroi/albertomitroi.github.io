@@ -27,7 +27,22 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button class="btn btn-primary" id="downloadPdfHeader">Download PDF</button>
+      <div class="nav-actions">
+        <button
+          class="btn btn-secondary nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="mainNav"
+          aria-label="Toggle navigation menu"
+          type="button"
+        >
+          Menu
+        </button>
+        <button class="btn btn-primary" id="downloadPdfHeader">Download PDF</button>
+      </div>
+    </div>
+    <div class="container mobile-section-indicator" id="mobileSectionIndicator" aria-live="polite" aria-atomic="true">
+      <span class="mobile-section-indicator__label" id="mobileSectionIndicatorLabel">Home</span>
     </div>
   </header>
 
@@ -42,7 +57,8 @@
 
           <div class="cta-row">
             <button class="btn btn-primary" id="downloadPdfHero">Download CV</button>
-            <a class="btn btn-secondary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#certifications">View Certifications</a>
+            <a class="cta-text-link" href="#projects">View Projects</a>
           </div>
 
           <ul class="meta-list" id="heroMeta"></ul>

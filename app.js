@@ -387,7 +387,13 @@
     mainImage.src = images[0].src;
     mainImage.alt = images[0].alt;
     main.appendChild(mainImage);
-    main.appendChild(createEl("span", "project-gallery-count", `${images.length} photos`));
+    const countBadge = createEl("span", "project-gallery-count", `${images.length} photos`);
+    const extraPhotos = Math.max(0, images.length - 1);
+    const mobileLabel = extraPhotos > 0
+      ? `View more photos +${extraPhotos}`
+      : "View photo";
+    countBadge.setAttribute("data-mobile-label", mobileLabel);
+    main.appendChild(countBadge);
     main.addEventListener("click", () => openProjectGallery(project.name, images, 0));
     gallery.appendChild(main);
 
@@ -496,6 +502,7 @@
       const info = createEl("div", "cert-info");
       info.appendChild(createEl("h4", "", cert.title));
       info.appendChild(createEl("div", "meta-row", `${cert.issuer} · ${cert.meta}`));
+      if (cert.credentialId) info.appendChild(createEl("div", "cert-credential-id", `Credential ID: ${cert.credentialId}`));
       if (cert.note) info.appendChild(createEl("p", "", cert.note));
       if (String(cert.status || "").toLowerCase() === "achieved") {
         const viewUrl = safeLink(cert.url) ? cert.url : cert.badge;
@@ -723,6 +730,51 @@
     });
   }
 
+  function initMobileMenu() {
+    const header = qs(".site-header");
+    const nav = qs("#mainNav");
+    const toggle = qs("#navToggle");
+    if (!header || !nav || !toggle) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 980px)");
+    const isMenuOpen = () => header.classList.contains("nav-open");
+
+    function setMenu(open) {
+      if (open && mobileQuery.matches) {
+        header.classList.add("nav-open");
+        toggle.setAttribute("aria-expanded", "true");
+      } else {
+        header.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    toggle.addEventListener("click", () => setMenu(!isMenuOpen()));
+
+    nav.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => setMenu(false));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!mobileQuery.matches || !isMenuOpen()) return;
+      if (header.contains(event.target)) return;
+      setMenu(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenu(false);
+    });
+
+    const syncOnResize = () => {
+      if (!mobileQuery.matches) setMenu(false);
+    };
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncOnResize);
+    } else {
+      window.addEventListener("resize", syncOnResize);
+    }
+  }
+
   function getSectionScrollTarget(section) {
     if (!section) return null;
     const heading = section.querySelector(".section-heading");
@@ -755,6 +807,8 @@
 
     const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
     if (!links.length) return;
+    const sectionIndicator = qs("#mobileSectionIndicator");
+    const sectionIndicatorLabel = qs("#mobileSectionIndicatorLabel");
 
     const refs = links
       .map((link) => {
@@ -769,10 +823,24 @@
     if (!refs.length) return;
 
     let activeId = "";
+    function getIndicatorText(id) {
+      if (!id) return "";
+      const activeRef = refs.find((ref) => ref.id === id);
+      return activeRef ? activeRef.link.textContent.trim() : "";
+    }
+
+    function syncIndicator(id) {
+      if (!sectionIndicatorLabel) return;
+      const text = getIndicatorText(id);
+      sectionIndicatorLabel.textContent = text;
+      if (sectionIndicator) sectionIndicator.classList.toggle("is-empty", !text);
+    }
+
     function setActive(id) {
-      if (!id || activeId === id) return;
+      if (activeId === id) return;
       activeId = id;
-      refs.forEach((ref) => ref.link.classList.toggle("is-active", ref.id === id));
+      refs.forEach((ref) => ref.link.classList.toggle("is-active", !!id && ref.id === id));
+      syncIndicator(id);
     }
 
     links.forEach((link) => {
@@ -791,6 +859,8 @@
     function resolveActiveSectionId() {
       const header = document.querySelector(".site-header");
       const pivot = window.scrollY + (header ? header.offsetHeight : 0) + 24;
+      const firstTop = refs[0].section.offsetTop;
+      if (pivot < firstTop - 20) return "";
       let current = refs[0].id;
 
       refs.forEach((ref) => {
@@ -813,6 +883,7 @@
 
     window.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
     window.addEventListener("resize", scheduleActiveUpdate);
+    syncIndicator("");
     scheduleActiveUpdate();
 
     const hashId = window.location.hash.replace(/^#/, "");
@@ -862,6 +933,7 @@
     initSidebarSections();
     initResume();
     bindActions();
+    initMobileMenu();
     initNavigation();
     initSectionHeadingReveal();
   }
