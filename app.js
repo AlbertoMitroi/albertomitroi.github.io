@@ -845,7 +845,7 @@
         <div class="resume-extra-cert-head">
           ${cert.logo ? `<img class="resume-inline-logo resume-inline-logo--mini" src="${cert.logo}" alt="${cert.issuer} logo" />` : ""}
           <div>
-            <strong>${cert.title}</strong> — ${cert.issuer} (${cert.issued})${cert.credentialId ? ` · Credential ID: ${cert.credentialId}` : ""}
+            <strong>${cert.title}</strong> · ${cert.issuer} (${cert.issued})${cert.credentialId ? ` · Credential ID: ${cert.credentialId}` : ""}
           </div>
         </div>
         ${safeLink(cert.url) ? `<a class="resume-credential-link resume-credential-link--small" href="${cert.url}" target="_blank" rel="noreferrer">Show credential</a>` : ""}

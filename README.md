@@ -1,4 +1,4 @@
-# Alberto CV / Portfolio — GitHub Pages Ready
+# Alberto CV / Portfolio (GitHub Pages Ready)
 
 Acest proiect este gândit să meargă direct pe **GitHub Pages** și folosește un **single source of truth**:
 

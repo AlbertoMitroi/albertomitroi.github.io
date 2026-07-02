@@ -501,6 +501,12 @@ body.js-enhanced .section-heading.is-visible {
   overflow-wrap: anywhere;
 }
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+/* When the project count is odd, center the lone last card in its row. */
+.projects-grid > .project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 0.5rem);
+}
 .project-card { padding: 1.4rem; display: flex; flex-direction: column; gap: 0.95rem; border-color: #dce5f5; }
 .project-top { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
 .project-title-wrap {
@@ -536,6 +542,8 @@ body.js-enhanced .section-heading.is-visible {
   display: grid;
   gap: 0.45rem;
   margin: 0.25rem 0 0.15rem;
+  /* Pin the gallery toward the bottom so galleries align across a row of cards. */
+  margin-top: auto;
 }
 .project-gallery-main {
   position: relative;
@@ -1270,6 +1278,8 @@ body.project-gallery-open { overflow: hidden; }
   .section[id] { scroll-margin-top: 122px; }
 
   .hero-grid, .section-grid--about, .split-grid, .cards-grid, .projects-grid, .skill-groups, .contact-card { grid-template-columns: 1fr; }
+  /* Single-column: the odd-card centering must not shrink the last card. */
+  .projects-grid > .project-card:last-child:nth-child(odd) { grid-column: auto; width: auto; justify-self: stretch; }
   .hero {
     padding-top: 2.6rem;
     padding-bottom: 1.8rem;

@@ -13,16 +13,16 @@ window.cvData = {
   },
   siteMeta: {
     siteUrl: "https://albertomitroi.github.io/",
-    lastUpdated: "March 2026"
+    lastUpdated: "July 2026"
   },
   heroFacts: [
-    "2+ years in production",
+    "Production-Proven Systems",
     "Azure & AI Certified",
     "Event-driven systems",
     "React / Next.js / Angular"
   ],
   summary: [
-    ".NET Full-Stack Developer with 2+ years in production and Azure + AI certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, clean service boundaries, and production-ready AI integration patterns.",
+    "Production-proven .NET Full-Stack Developer with Azure + AI certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, clean service boundaries, and production-ready AI integration patterns.",
     "I build and ship end-to-end products with .NET and Azure at the core, paired with modern React, Next.js, and Angular interfaces. My delivery workflow includes CI/CD, observability, and containerized deployments through Azure DevOps, GitHub Actions, and Docker."
   ],
   aboutHighlights: [
@@ -43,6 +43,22 @@ window.cvData = {
     { label: "TopZonal", value: "topzonal.ro", url: "https://www.topzonal.ro" }
   ],
   experience: [
+    {
+      company: "Oryntech.AI",
+      companyLogo: "assets/oryntech-logosymbol-color.svg",
+      role: "Co-CTO",
+      period: "Feb 2026 – Present",
+      location: "Craiova, Romania (Remote)",
+      website: "https://www.oryntech.ai",
+      intro: "Co-CTO at Oryntech.AI, an AI automation company that helps service businesses capture, nurture, and convert leads around the clock with conversational AI agents, CRM, and multi-channel marketing automation.",
+      bullets: [
+        "Co-lead the company's technical direction and product strategy, turning business goals into shipped features, agents, and automation.",
+        "Designed and built the Oryntech.AI sales and marketing website with Next.js, React, and TypeScript, delivering a fast, responsive, conversion-focused experience.",
+        "Built conversational AI agents (voice and chat receptionists plus sales, content, and reputation assistants) that integrate LLMs and real-time speech for 24/7 customer engagement.",
+        "Created multi-channel marketing automation across email, SMS, and voice, including appointment confirmations and reminders, invoice follow-ups, and lead-nurture workflows.",
+        "Delivered CRM pipelines, dashboards, and analytics, and integrated third-party services to streamline client operations."
+      ]
+    },
     {
       company: "Encora Inc.",
       companyLogo: "assets/encora.jpeg",
@@ -92,10 +108,32 @@ window.cvData = {
   ],
   projects: [
     {
+      name: "Oryntech.AI",
+      logo: "assets/oryntech-logosymbol-color.svg",
+      url: "https://www.oryntech.ai",
+      summary: "The Oryntech.AI product website and AI automation suite I build as Co-CTO: a Next.js marketing site paired with conversational AI agents, CRM, and multi-channel marketing automation for service businesses.",
+      gallery: [
+        { src: "assets/projects/oryntech/oryntech-01.png", alt: "Oryntech AI Agents platform overview" },
+        { src: "assets/projects/oryntech/oryntech-02.png", alt: "Oryntech AI agent roles: receptionist, content writer, and salesperson" },
+        { src: "assets/projects/oryntech/oryntech-03.png", alt: "Oryntech analytics dashboard with email engagement reporting" },
+        { src: "assets/projects/oryntech/oryntech-04.png", alt: "Oryntech automation workflow builder for appointment confirmations and reminders" },
+        { src: "assets/projects/oryntech/oryntech-05.png", alt: "Oryntech workflow routing assigned users to calendars" },
+        { src: "assets/projects/oryntech/oryntech-06.png", alt: "Oryntech invoice follow-up automation across email and SMS" },
+        { src: "assets/projects/oryntech/oryntech-07.png", alt: "Oryntech industry solutions with an embedded voice AI agent" },
+        { src: "assets/projects/oryntech/oryntech-08.png", alt: "Oryntech marketing landing page" }
+      ],
+      bullets: [
+        "Designed and built the Oryntech.AI sales and marketing website with Next.js, React, and TypeScript, focused on conversion and a polished, responsive UX.",
+        "Built conversational AI agents (voice and chat) for reception, sales, content, and reputation, enabling 24/7 automated customer engagement.",
+        "Created multi-step marketing automation across email, SMS, and voice (appointment reminders, invoice follow-ups, and lead nurturing) with connected CRM and analytics."
+      ],
+      stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Conversational AI", "Voice AI", "LLM Integration", "OpenAI", "Prompt Engineering", "Marketing Automation", "CRM", "Workflow Automation", "Webhooks", "API Integrations"]
+    },
+    {
       name: "TopZonal.ro",
       logo: "assets/topzonal-logo.webp",
       url: "https://www.topzonal.ro",
-      summary: "A next-generation web/mobile platform connecting homeowners with local professionals, designed with a mobile-first dashboard and product-focused UX.",
+      summary: "A next-generation web and mobile platform connecting homeowners with trusted local professionals, built as a mobile-first PWA with AI-assisted discovery and product-focused UX.",
       gallery: [
         { src: "assets/projects/topzonal/topzonal-01.png", alt: "TopZonal platform screenshot 1" },
         { src: "assets/projects/topzonal/topzonal-02.png", alt: "TopZonal platform screenshot 2" },
@@ -107,9 +145,10 @@ window.cvData = {
         { src: "assets/projects/topzonal/topzonal-08.png", alt: "TopZonal platform screenshot 8" }
       ],
       bullets: [
-        "Built the frontend with React and Next.js using the T3 stack and a scalable monorepo structure.",
+        "Built the frontend with React and Next.js on the T3 stack in a scalable monorepo, shipped as an installable, mobile-first PWA.",
         "Deployed an Azure-based backend using Docker, Azure Container Apps, Azure SQL, Blob Storage, and Azure Key Vault.",
-        "Integrated Azure OpenAI for intelligent recommendations and enhanced user interactions."
+        "Implemented a RAG-powered AI chat with semantic search over services and professionals for natural-language discovery and context-aware answers.",
+        "Built a full admin module for users, professionals, listings, and reviews, with moderation, analytics, and Azure OpenAI-powered recommendations and matching."
       ],
       stack: ["React", "Next.js 14", "TypeScript", "T3 Stack", "Turborepo", "tRPC", "Prisma ORM", "Tailwind CSS", "Clerk Auth", "PWA", "Azure Container Apps", "Azure SQL", "Azure OpenAI", "Docker", "Framer Motion"]
     },
