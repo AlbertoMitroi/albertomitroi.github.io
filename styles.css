@@ -1606,7 +1606,7 @@ body.project-gallery-open { overflow: hidden; }
     height: 36px;
   }
 }
-@page { size: A4 portrait; margin: 0; }
+@page { size: A4 portrait; margin: 11.5mm 0; }
 @media print {
   .app-loader,
   .site-header,
@@ -1651,6 +1651,10 @@ body.project-gallery-open { overflow: hidden; }
     opacity: 1 !important;
     visibility: visible !important;
     box-sizing: border-box !important;
+    /* Vertical breathing room is provided per-page by @page margin; keep only
+       the horizontal inset here so top-of-page content is not flush to the edge. */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .resume-shell {
