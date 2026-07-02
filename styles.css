@@ -1031,10 +1031,7 @@ body.project-gallery-open { overflow: hidden; }
 }
 .resume-section { margin-top: 10px; page-break-inside: auto; break-inside: auto; }
 .resume-section--projects {
-  page-break-before: always;
-  break-before: page;
-  margin-top: 0;
-  padding-top: 4.5mm;
+  margin-top: 10px;
 }
 .resume-section--primary-education {
   margin-top: 7px;
@@ -1686,13 +1683,10 @@ body.project-gallery-open { overflow: hidden; }
     break-after: avoid !important;
   }
 
-  .resume-title {
+  .resume-title,
+  .resume-cert-subtitle {
     break-after: avoid !important;
-  }
-
-  .resume-section--projects {
-    break-before: page !important;
-    page-break-before: always !important;
+    page-break-after: avoid !important;
   }
 
   .resume-site-footer-note {

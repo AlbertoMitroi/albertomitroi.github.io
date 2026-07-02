@@ -902,7 +902,7 @@
 
         <section class="resume-section"><h2 class="resume-title">Experience</h2>${experienceHtml}</section>
         ${primaryEducationHtml}
-        <section class="resume-section resume-section--projects">${resumeGeneratedBar}<h2 class="resume-title">Projects</h2>${projectHtml}</section>
+        <section class="resume-section resume-section--projects"><h2 class="resume-title">Projects</h2>${projectHtml}</section>
         <section class="resume-section">
           <h2 class="resume-title">Certifications</h2>
           ${certHtml}
