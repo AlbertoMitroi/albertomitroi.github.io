@@ -196,20 +196,7 @@ def build():
     job(
         story,
         style,
-        "Oryntech.AI",
-        "Craiova, Romania (Remote)",
-        "AI Solutions Engineer &amp; Co-CTO",
-        "Mar 2026 - Present | Part-time",
-        [
-            "Translate service-business workflows into full-stack features, integrations, conversational agents and automation.",
-            "Build React, Next.js and TypeScript interfaces connected to APIs, webhooks, CRM, booking and follow-up workflows.",
-            "Implement voice and chat agents with context management, guardrails, human handoff, testing and reliability controls.",
-        ],
-    )
-    job(
-        story,
-        style,
-        "Encora Inc.",
+        "Encora Inc. (part of Coforge)",
         "Craiova, Romania (Hybrid)",
         ".NET Full Stack Developer",
         "Oct 2024 - Present | Full-time",
@@ -223,9 +210,23 @@ def build():
     job(
         story,
         style,
+        "Oryntech",
+        "Craiova, Romania (Remote)",
+        "AI Solutions Engineer &amp; Co-CTO",
+        "Mar 2026 - Present | Part-time",
+        [
+            "Build full-stack AI features and workflow automations for service businesses.",
+            "Develop React, Next.js and TypeScript interfaces connected to APIs, webhooks, CRM and booking workflows.",
+            "Connect voice and chat agents to customer conversations, follow-up and messaging processes.",
+            "Implement context management, guardrails, human handoff, testing and reliability controls.",
+        ],
+    )
+    job(
+        story,
+        style,
         "Encora Inc.",
         "Craiova, Romania (Hybrid)",
-        "Full Stack Development Intern",
+        ".NET Full Stack Developer Intern",
         "Jul 2024 - Oct 2024",
         [
             "Contributed to a trading application using .NET 8 backend services and Angular frontend features.",
@@ -279,14 +280,14 @@ def build():
 
     section(story, style, "EDUCATION")
     story.append(Paragraph("Faculty of Automation, Computers and Electronics | University of Craiova", style["company"]))
-    story.append(Paragraph("Computer Science | Sept 2022 - Jul 2026 | Craiova, Romania", style["meta"]))
+    story.append(Paragraph("Master's degree, Artificial Intelligence and Applied Computing | Aug 2026 - Jul 2028", style["meta"]))
+    story.append(Paragraph("Bachelor of Engineering, Computer Science and Information Technology | Sept 2022 - Jul 2026", style["meta"]))
 
     section(story, style, "CERTIFICATIONS")
     certs = [
         "Microsoft Certified: Azure Developer Associate (AZ-204) | Microsoft | Credential ID 42EFC399D66B1E5C | Mar 2026",
         "Introduction to Generative AI for Software Development | DeepLearning.AI | Credential ID G503GKSPZ3IO | Jul 2025",
         "Generative AI with Large Language Models | Amazon Web Services | Credential ID A3COZZP9ND79 | Jul 2025",
-        ".NET 8 Microservices: DDD, CQRS, Vertical/Clean Architecture | Udemy | Jul 2025",
     ]
     for cert in certs:
         bullet(story, style, cert)

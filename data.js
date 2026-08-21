@@ -42,41 +42,39 @@ window.cvData = {
   ],
   experience: [
     {
-      company: "Oryntech.AI",
-      companyLogo: "assets/oryntech-logosymbol-color.svg",
-      role: "AI Solutions Engineer & Co-CTO",
-      period: "Mar 2026 - Present",
-      location: "Craiova, Romania (Remote)",
-      website: "https://www.oryntech.ai",
-      intro: "Build full-stack and AI automation features for customer conversations, booking, CRM and multi-channel follow-up.",
-      bullets: [
-        "Co-lead technical direction and translate business workflows into product features, integrations, AI agents and automation.",
-        "Built the Oryntech.AI website with Next.js, React and TypeScript.",
-        "Built voice and chat agents for reception, sales, content and reputation workflows.",
-        "Created multi-channel marketing automation across email, SMS, and voice, including appointment confirmations and reminders, invoice follow-ups, and lead-nurture workflows.",
-        "Delivered CRM pipelines, dashboards, and analytics, and integrated third-party services to streamline client operations."
-      ]
-    },
-    {
-      company: "Encora Inc.",
+      company: "Encora Inc. (part of Coforge)",
       companyLogo: "assets/encora.jpeg",
       role: ".NET Full Stack Developer",
       period: "Oct 2024 - Present",
       location: "Craiova, Romania (Hybrid)",
-      website: "https://www.encora.com/",
-      intro: "Work on features for a distributed UK insurance platform across a microservices ecosystem.",
+      website: "https://www.coforge.com/",
+      intro: "Develop .NET 8 services and Angular features for a distributed insurance platform serving the UK market.",
       bullets: [
-        "Implement business logic in distributed services with attention to data consistency and operational reliability.",
-        "Build asynchronous communication flows between microservices using Kafka, RabbitMQ, and Azure Service Bus.",
-        "Work with Event Sourcing patterns using Marten (PostgreSQL) and query operational/search views through Elasticsearch.",
-        "Use CQRS and DDD conventions across services and automated tests.",
-        "Develop and maintain BPMN-driven business workflows and contribute to Angular frontend delivery."
+        "Develop REST APIs and domain workflows in C#/.NET 8 using CQRS and Domain-Driven Design.",
+        "Build asynchronous integrations with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
+        "Use Marten and PostgreSQL for event-sourced data and Elasticsearch for operational and search views.",
+        "Deliver Angular features and contribute to testing, Azure delivery, troubleshooting and operational support."
+      ]
+    },
+    {
+      company: "Oryntech",
+      companyLogo: "assets/oryntech-logosymbol-color.svg",
+      role: "AI Solutions Engineer & Co-CTO",
+      period: "Mar 2026 - Present",
+      location: "Craiova, Romania (Remote, part-time)",
+      website: "https://www.oryntech.ai",
+      intro: "Build full-stack AI features and workflow automations for service businesses.",
+      bullets: [
+        "Develop React, Next.js and TypeScript interfaces connected to APIs, webhooks, CRM and booking workflows.",
+        "Connect voice and chat agents to customer conversations, follow-up and messaging processes.",
+        "Implement context management, guardrails, human handoff, testing and reliability controls.",
+        "Contribute to architecture and technical decisions."
       ]
     },
     {
       company: "Encora Inc.",
       companyLogo: "assets/encora.jpeg",
-      role: "Full Stack Development Internship",
+      role: ".NET Full Stack Developer Intern",
       period: "Jul 2024 - Oct 2024",
       location: "Craiova, Romania (Hybrid)",
       website: "https://www.encora.com/",
@@ -105,6 +103,27 @@ window.cvData = {
     }
   ],
   projects: [
+    {
+      name: "EShopMicroservices",
+      logo: "assets/github-142-svgrepo-com.svg",
+      url: "https://github.com/AlbertoMitroi/EShopMicroservices",
+      summary: "A .NET 8 and C# 12 e-commerce reference project built with microservices and cloud deployment patterns.",
+      gallery: [
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-01.png", alt: "EShopMicroservices screenshot 1" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-02.png", alt: "EShopMicroservices screenshot 2" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-03.png", alt: "EShopMicroservices screenshot 3" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-04.png", alt: "EShopMicroservices screenshot 4" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-05.png", alt: "EShopMicroservices screenshot 5" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-06.png", alt: "EShopMicroservices screenshot 6" },
+        { src: "assets/projects/EShopMicroservices/eshopmicroservices-07.png", alt: "EShopMicroservices screenshot 7" }
+      ],
+      bullets: [
+        "Applied Domain-Driven Design (DDD), CQRS, Clean Architecture, and Vertical Slice principles.",
+        "Built scalable service communication flows with RabbitMQ, Kafka, and Redis.",
+        "Used Azure, Docker, and GitHub Actions / CI/CD to model a production-style delivery setup."
+      ],
+      stack: ["Microservices", ".NET 8", "ASP.NET Core", "DDD", "CQRS", "Clean Architecture", "Vertical Slice", "Entity Framework Core", "RabbitMQ", "Kafka", "Redis", "Azure", "Docker", "GitHub Actions"]
+    },
     {
       name: "Oryntech.AI",
       logo: "assets/oryntech-logosymbol-color.svg",
@@ -149,27 +168,6 @@ window.cvData = {
         "Built administration workflows for users, professionals, listings, reviews, moderation, and product analytics."
       ],
       stack: ["React", "Next.js 14", "TypeScript", "T3 Stack", "Turborepo", "tRPC", "Prisma ORM", "Tailwind CSS", "Clerk Auth", "PWA", "Azure Container Apps", "Azure SQL", "Azure OpenAI", "Docker", "Framer Motion"]
-    },
-    {
-      name: "EShopMicroservices",
-      logo: "assets/github-142-svgrepo-com.svg",
-      url: "https://github.com/AlbertoMitroi/EShopMicroservices",
-      summary: "A .NET 8 and C# 12 e-commerce reference project built with microservices and cloud deployment patterns.",
-      gallery: [
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-01.png", alt: "EShopMicroservices screenshot 1" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-02.png", alt: "EShopMicroservices screenshot 2" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-03.png", alt: "EShopMicroservices screenshot 3" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-04.png", alt: "EShopMicroservices screenshot 4" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-05.png", alt: "EShopMicroservices screenshot 5" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-06.png", alt: "EShopMicroservices screenshot 6" },
-        { src: "assets/projects/EShopMicroservices/eshopmicroservices-07.png", alt: "EShopMicroservices screenshot 7" }
-      ],
-      bullets: [
-        "Applied Domain-Driven Design (DDD), CQRS, Clean Architecture, and Vertical Slice principles.",
-        "Built scalable service communication flows with RabbitMQ, Kafka, and Redis.",
-        "Used Azure, Docker, and GitHub Actions / CI/CD to model a production-style delivery setup."
-      ],
-      stack: ["Microservices", ".NET 8", "ASP.NET Core", "DDD", "CQRS", "Clean Architecture", "Vertical Slice", "Entity Framework Core", "RabbitMQ", "Kafka", "Redis", "Azure", "Docker", "GitHub Actions"]
     }
   ],
   skills: [
@@ -238,17 +236,17 @@ window.cvData = {
   education: [
     {
       title: "Faculty of Automation, Computers and Electronics",
-      subtitle: "Computer Science",
-      meta: "Sept 2022 - Jul 2026",
-      detail: "Bachelor of Science in Computer Science",
+      subtitle: "Artificial Intelligence and Applied Computing",
+      meta: "Aug 2026 - Jul 2028",
+      detail: "Master's degree",
       url: "https://ace.ucv.ro/"
     },
     {
-      title: "Stefan Odobleja National College",
-      subtitle: "Mathematics-Informatics · Intensive Informatics",
-      meta: "Sept 2018 - Jul 2022",
-      detail: "High School Diploma",
-      url: "https://www.stefanodoblejacraiova.ro/"
+      title: "Faculty of Automation, Computers and Electronics",
+      subtitle: "Computer Science and Information Technology, English Program",
+      meta: "Sept 2022 - Jul 2026",
+      detail: "Bachelor of Engineering",
+      url: "https://ace.ucv.ro/"
     }
   ],
   contactCards: [

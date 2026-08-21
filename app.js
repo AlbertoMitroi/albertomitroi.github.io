@@ -922,7 +922,7 @@
       if (!button) return;
       button.addEventListener("click", () => {
         const link = document.createElement("a");
-        link.href = "assets/CV_AlbertoMitroi.pdf?v=20260821-2";
+        link.href = "assets/CV_AlbertoMitroi.pdf?v=20260821-3";
         link.download = "CV_AlbertoMitroi.pdf";
         document.body.appendChild(link);
         link.click();
