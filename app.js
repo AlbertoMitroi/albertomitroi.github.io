@@ -193,7 +193,7 @@
   }
 
   function parsePeriodBounds(period) {
-    const chunks = String(period || "").split(/\s*[–-]\s*/).map((chunk) => chunk.trim()).filter(Boolean);
+    const chunks = String(period || "").split(/\s*-\s*/).map((chunk) => chunk.trim()).filter(Boolean);
     if (chunks.length <= 1) return { start: chunks[0] || String(period || ""), end: chunks[0] || String(period || "") };
     return { start: chunks[0], end: chunks[1] };
   }
@@ -232,7 +232,7 @@
     if (!roles.length) return "";
     const latest = parsePeriodBounds(roles[0].period);
     const earliest = parsePeriodBounds(roles[roles.length - 1].period);
-    return `${earliest.start} – ${latest.end}`;
+    return `${earliest.start} - ${latest.end}`;
   }
 
   function buildCompanyDuration(roles) {
@@ -671,7 +671,6 @@
     const contacts = qs("#contactActions");
     const contactIconFallback = {
       email: "assets/gmail-svgrepo-com.svg",
-      phone: "assets/phone-rounded-svgrepo-com.svg",
       github: "assets/github-142-svgrepo-com.svg"
     };
     data.contactCards.forEach((entry) => {
@@ -728,7 +727,6 @@
     const resumeSkillItemLimit = 6;
     const resumeContactItems = [
       { text: data.personal.location, icon: "assets/location-pin-svgrepo-com.svg", href: "" },
-      { text: data.personal.phone, icon: "assets/phone-rounded-svgrepo-com.svg", href: `tel:${data.personal.phone.replace(/\s+/g, "")}` },
       { text: data.personal.email, icon: "assets/gmail-svgrepo-com.svg", href: `mailto:${data.personal.email}` }
     ];
     const resumeContactHtml = resumeContactItems.map((item) => {
@@ -906,7 +904,7 @@
         <section class="resume-section">
           <h2 class="resume-title">Certifications</h2>
           ${certHtml}
-          ${additionalCertHtml ? `<div class="resume-cert-subtitle">Additional AI Certifications</div><ul class="resume-extra-certs">${additionalCertHtml}</ul>` : ""}
+          ${additionalCertHtml ? `<div class="resume-cert-subtitle">Selected AI Certifications</div><ul class="resume-extra-certs">${additionalCertHtml}</ul>` : ""}
         </section>
         <section class="resume-section"><h2 class="resume-title">Core Skills</h2><div class="resume-skills-grid">${skillsHtml}</div></section>
         ${resumeEndNote}
@@ -924,7 +922,7 @@
       if (!button) return;
       button.addEventListener("click", () => {
         const link = document.createElement("a");
-        link.href = "assets/CV_AlbertoMitroi.pdf";
+        link.href = "assets/CV_AlbertoMitroi.pdf?v=20260821-2";
         link.download = "CV_AlbertoMitroi.pdf";
         document.body.appendChild(link);
         link.click();

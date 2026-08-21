@@ -56,8 +56,8 @@ assets/
 
 - `assets/profile.jpg` este extras din screenshot-ul CV-ului și este low-res.
 - Pentru un rezultat mai bun, înlocuiește imaginea cu una mai clară, păstrând același nume de fișier.
-- În `data.js`, certificarea **AZ-204** a fost lăsată exact cum apare în CV-ul trimis (`In Progress`).
-  Dacă vrei varianta actualizată, schimbă acel text direct din `data.js`.
+- În `data.js`, certificarea **AZ-204** este prezentată ca obținută, în acord cu profilul LinkedIn și credentialul Microsoft public.
+- CV-ul PDF public se regenerează cu `scripts/generate_ats_cv.py`; sursa folosește un layout single-column optimizat pentru parsare ATS.
 
 ## Testare locală
 
