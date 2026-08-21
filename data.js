@@ -1,58 +1,57 @@
 window.cvData = {
   personal: {
-    name: "Mitroi Alberto Ionut",
+    name: "Alberto Mitroi",
     preferredName: "Alberto Mitroi",
-    role: ".NET Full-Stack Developer",
-    headline: "Microsoft Azure and AI Certified .NET engineer delivering scalable, cloud-native systems and event-driven architecture, while building high-impact product experiences with React, Next.js, and Angular.",
+    role: "Full Stack Software Engineer",
+    headline: "Azure-certified engineer building end-to-end products with C#/.NET, React, Next.js, TypeScript, distributed systems, and applied AI.",
     location: "Craiova, Romania",
-    workMode: "Hybrid / Remote-ready",
+    workMode: "Romania / EU remote",
     phone: "+40 745 915 532",
     email: "mitroialbertoionut@gmail.com",
     image: "assets/profile.webp",
-    website: "https://www.topzonal.ro"
+    website: "https://albertomitroi.github.io/"
   },
   siteMeta: {
     siteUrl: "https://albertomitroi.github.io/",
-    lastUpdated: "July 2026"
+    lastUpdated: "August 2026"
   },
   heroFacts: [
-    "Production-Proven Systems",
-    "Azure & AI Certified",
-    "Event-driven systems",
-    "React / Next.js / Angular"
+    ".NET + React delivery",
+    "Microsoft Azure Certified",
+    "Distributed systems",
+    "Applied AI products"
   ],
   summary: [
-    "Production-proven .NET Full-Stack Developer with Azure + AI certifications, delivering cloud-native systems with C#/.NET and Azure services. I build maintainable backend architectures using DDD, CQRS, clean service boundaries, and production-ready AI integration patterns.",
-    "I build and ship end-to-end products with .NET and Azure at the core, paired with modern React, Next.js, and Angular interfaces. My delivery workflow includes CI/CD, observability, and containerized deployments through Azure DevOps, GitHub Actions, and Docker."
+    "Full Stack Software Engineer building end-to-end products with C#/.NET and Microsoft Azure on the backend, paired with React, Next.js, TypeScript, and Angular interfaces.",
+    "My work spans distributed services, event-driven workflows, cloud delivery, modern product interfaces, and applied-AI capabilities such as conversational agents, semantic search, and RAG-oriented experiences."
   ],
   aboutHighlights: [
-    ".NET-first cloud delivery on Azure",
-    "Azure and AI-certified production readiness",
-    "DDD, CQRS, and clean architecture",
-    "CI/CD and observability mindset"
+    "End-to-end .NET + React product delivery",
+    "Azure-certified cloud engineering",
+    "Distributed and event-driven systems",
+    "Applied AI integration"
   ],
   focusAreas: [
-    { title: ".NET & API Engineering", text: "Resilient ASP.NET Core APIs with clear boundaries, validation, and testability." },
-    { title: "Event-Driven Architecture", text: "DDD, CQRS, MediatR, and microservices messaging workflows with Kafka and RabbitMQ, designed for reliability and growth." },
-    { title: ".NET + Azure + AI Delivery", text: "Production delivery of .NET microservices on Azure using App Service, Azure SQL, Blob Storage, Application Insights, Kafka/RabbitMQ integration, AI-enabled features, and CI/CD pipelines." },
-    { title: "Modern Product Frontend", text: "React, Next.js, and Angular with TypeScript and UX-focused interfaces connected to strong backend foundations." }
+    { title: "Full-Stack Product Delivery", text: "End-to-end product work across React, Next.js, TypeScript, Angular, ASP.NET Core APIs, and relational data." },
+    { title: ".NET & API Engineering", text: "Maintainable C#/.NET services and REST APIs with clear boundaries, validation, testing, and secure integrations." },
+    { title: "Azure & Distributed Systems", text: "Cloud delivery and asynchronous workflows using Azure services, Kafka, RabbitMQ, CQRS, DDD, and event sourcing." },
+    { title: "Applied AI Integration", text: "Conversational and voice agents, semantic search, embeddings, and RAG-oriented product experiences connected to real workflows." }
   ],
   links: [
     { label: "GitHub", value: "AlbertoMitroi", url: "https://github.com/AlbertoMitroi" },
-    { label: "LinkedIn", value: "Alberto Mitroi", url: "https://www.linkedin.com/in/mitroialberto/" },
-    { label: "TopZonal", value: "topzonal.ro", url: "https://www.topzonal.ro" }
+    { label: "LinkedIn", value: "Alberto Mitroi", url: "https://www.linkedin.com/in/mitroialberto/" }
   ],
   experience: [
     {
       company: "Oryntech.AI",
       companyLogo: "assets/oryntech-logosymbol-color.svg",
-      role: "Co-CTO",
+      role: "AI Solutions Engineer & Co-CTO",
       period: "Feb 2026 – Present",
       location: "Craiova, Romania (Remote)",
       website: "https://www.oryntech.ai",
-      intro: "Co-CTO at Oryntech.AI, an AI automation company that helps service businesses capture, nurture, and convert leads around the clock with conversational AI agents, CRM, and multi-channel marketing automation.",
+      intro: "Building full-stack and AI automation capabilities for service businesses across customer conversations, booking, CRM, and multi-channel follow-up.",
       bullets: [
-        "Co-lead the company's technical direction and product strategy, turning business goals into shipped features, agents, and automation.",
+        "Co-lead technical direction and translate business workflows into product features, integrations, AI agents, and automation.",
         "Designed and built the Oryntech.AI sales and marketing website with Next.js, React, and TypeScript, delivering a fast, responsive, conversion-focused experience.",
         "Built conversational AI agents (voice and chat receptionists plus sales, content, and reputation assistants) that integrate LLMs and real-time speech for 24/7 customer engagement.",
         "Created multi-channel marketing automation across email, SMS, and voice, including appointment confirmations and reminders, invoice follow-ups, and lead-nurture workflows.",
@@ -111,7 +110,7 @@ window.cvData = {
       name: "Oryntech.AI",
       logo: "assets/oryntech-logosymbol-color.svg",
       url: "https://www.oryntech.ai",
-      summary: "The Oryntech.AI product website and AI automation suite I build as Co-CTO: a Next.js marketing site paired with conversational AI agents, CRM, and multi-channel marketing automation for service businesses.",
+      summary: "The Oryntech.AI product experience and automation suite I build as AI Solutions Engineer & Co-CTO: a Next.js interface paired with conversational AI agents, CRM, and multi-channel workflows for service businesses.",
       gallery: [
         { src: "assets/projects/oryntech/oryntech-01.png", alt: "Oryntech AI Agents platform overview" },
         { src: "assets/projects/oryntech/oryntech-02.png", alt: "Oryntech AI agent roles: receptionist, content writer, and salesperson" },
@@ -132,8 +131,8 @@ window.cvData = {
     {
       name: "TopZonal.ro",
       logo: "assets/topzonal-logo.webp",
-      url: "https://www.topzonal.ro",
-      summary: "A next-generation web and mobile platform connecting homeowners with trusted local professionals, built as a mobile-first PWA with AI-assisted discovery and product-focused UX.",
+      url: "",
+      summary: "An active-development web platform for local services, combining a mobile-first product experience with cloud architecture and experiments in AI-assisted discovery.",
       gallery: [
         { src: "assets/projects/topzonal/topzonal-01.png", alt: "TopZonal platform screenshot 1" },
         { src: "assets/projects/topzonal/topzonal-02.png", alt: "TopZonal platform screenshot 2" },
@@ -145,10 +144,10 @@ window.cvData = {
         { src: "assets/projects/topzonal/topzonal-08.png", alt: "TopZonal platform screenshot 8" }
       ],
       bullets: [
-        "Built the frontend with React and Next.js on the T3 stack in a scalable monorepo, shipped as an installable, mobile-first PWA.",
-        "Deployed an Azure-based backend using Docker, Azure Container Apps, Azure SQL, Blob Storage, and Azure Key Vault.",
-        "Implemented a RAG-powered AI chat with semantic search over services and professionals for natural-language discovery and context-aware answers.",
-        "Built a full admin module for users, professionals, listings, and reviews, with moderation, analytics, and Azure OpenAI-powered recommendations and matching."
+        "Built the frontend with React and Next.js on the T3 stack in a monorepo, with a mobile-first, installable PWA experience.",
+        "Designed and implemented Azure-oriented backend components using Docker, Azure Container Apps, Azure SQL, Blob Storage, and Azure Key Vault.",
+        "Prototyped RAG-oriented chat and semantic search flows for natural-language discovery across services and professionals.",
+        "Built administration workflows for users, professionals, listings, reviews, moderation, and product analytics."
       ],
       stack: ["React", "Next.js 14", "TypeScript", "T3 Stack", "Turborepo", "tRPC", "Prisma ORM", "Tailwind CSS", "Clerk Auth", "PWA", "Azure Container Apps", "Azure SQL", "Azure OpenAI", "Docker", "Framer Motion"]
     },
@@ -176,8 +175,13 @@ window.cvData = {
   ],
   skills: [
     {
+      title: "Full-Stack Product Engineering",
+      summary: "Modern interfaces connected to maintainable APIs, data models, cloud services, and real product workflows.",
+      items: ["React", "Next.js", "Angular", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "tRPC", "Prisma ORM", "PWA"]
+    },
+    {
       title: ".NET Backend & API Engineering",
-      summary: "Production backend delivery focused on maintainable services, testability, and clear service boundaries.",
+      summary: "Maintainable services and APIs focused on testability, secure integration, and clear boundaries.",
       items: [".NET 8", "C#", "ASP.NET Core", "Web API", "Microservices", "Entity Framework Core", "LINQ", "Dependency Injection", "FluentValidation", "xUnit"]
     },
     {
@@ -192,13 +196,8 @@ window.cvData = {
     },
     {
       title: "AI & LLM Product Integration",
-      summary: "Applied AI capabilities for real product use cases, prompt workflows, and production-oriented integration.",
-      items: ["Azure OpenAI", "Generative AI Integration", "Prompt Engineering", "LLM Workflows", "AI-assisted Product Features", "AI Production Readiness"]
-    },
-    {
-      title: "Frontend & Product Interfaces",
-      summary: "Modern product-facing interfaces connected to strong backend systems and practical UX execution.",
-      items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "JavaScript", "HTML5", "CSS3", "tRPC", "Prisma ORM", "Framer Motion", "PWA"]
+      summary: "Applied AI capabilities for conversational workflows, semantic discovery, and product-facing automation.",
+      items: ["Azure OpenAI", "Generative AI Integration", "Conversational AI", "Voice AI", "Prompt Engineering", "LLM Workflows", "Semantic Search", "RAG-oriented Features"]
     },
     {
       title: "Architecture, Data & Quality",
