@@ -91,12 +91,12 @@ window.cvData = {
       ]
     },
     {
-      company: "Independent Developer",
-      companyLogo: "assets/github-142-svgrepo-com.svg",
+      company: "Mecafix CNC",
+      companyLogo: "assets/mecafix-cnc.png",
       role: "Software Developer - C# / Python",
       period: "Sep 2022 - Nov 2023",
       location: "Craiova, Romania (Part-time)",
-      website: "https://github.com/AlbertoMitroi",
+      website: "",
       intro: "Built and maintained a C#/.NET automation tool used daily to prepare production jobs in a metalworking and CNC workshop.",
       bullets: [
         "Developed a Windows desktop application in C#/.NET that automates and orchestrates production-preparation workflows for a metalworking and CNC environment.",
@@ -254,7 +254,7 @@ window.cvData = {
     {
       title: "Faculty of Automation, Computers and Electronics",
       subtitle: "Computer Science and Information Technology, English Program",
-      meta: "Sept 2022 - Jul 2026",
+      meta: "Sep 2022 - Jul 2026",
       detail: "Bachelor of Engineering",
       url: "https://ace.ucv.ro/"
     }

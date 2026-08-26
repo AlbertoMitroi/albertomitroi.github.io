@@ -144,14 +144,14 @@ def set_metadata(canvas, document):
     canvas.setKeywords(
         "C# Developer, .NET Developer, .NET Software Engineer, Full Stack Developer, Full Stack Software Engineer, "
         "Backend Developer, Software Engineer, Software Developer, Python Developer, Automation Developer, "
-        "4 years C# experience, .NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Minimal APIs, "
-        "Entity Framework Core, LINQ, async await, multithreading, dependency injection, MediatR, FluentValidation, "
-        "xUnit, unit testing, integration testing, TDD, code review, SOLID, OOP, design patterns, "
+        "4 years C# experience, .NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, "
+        "Entity Framework Core, LINQ, async await, dependency injection, MediatR, FluentValidation, "
+        "xUnit, unit testing, integration testing, code review, SOLID, OOP, design patterns, "
         "microservices, distributed systems, Microsoft Azure, Azure Developer Associate, AZ-204, "
         "Angular, React, Next.js, TypeScript, JavaScript, HTML, CSS, "
         "Kafka, RabbitMQ, Azure Service Bus, message queues, event-driven architecture, "
         "CQRS, Domain-Driven Design, Clean Architecture, Vertical Slice Architecture, Event Sourcing, Marten, "
-        "PostgreSQL, SQL Server, T-SQL, Elasticsearch, Redis, "
+        "PostgreSQL, SQL Server, Elasticsearch, Redis, "
         "Docker, containers, CI/CD, Azure DevOps, GitHub Actions, Git, Agile, Scrum, SDLC, "
         "Python, CLI automation, scripting, process orchestration, Windows desktop development, GUI, VBA, "
         "Azure OpenAI, LLM, RAG, semantic search, embeddings, conversational AI, voice AI, AI agents, prompt engineering"
@@ -159,13 +159,9 @@ def set_metadata(canvas, document):
 
 
 def decorate_page(canvas, document):
+    # No running header or footer: some ATS parsers read page furniture before the
+    # body text, or drop it entirely. Keeping the page to body text only is safest.
     set_metadata(canvas, document)
-    canvas.saveState()
-    canvas.setFillColor(GRAY)
-    canvas.setFont("Helvetica", 7.5)
-    canvas.drawString(16 * mm, 7 * mm, "Alberto Mitroi | Full Stack Software Engineer")
-    canvas.drawRightString(A4[0] - 16 * mm, 7 * mm, f"Page {document.page}")
-    canvas.restoreState()
 
 
 def build():
@@ -270,8 +266,8 @@ def build():
     job(
         story,
         style,
-        "Independent Developer",
-        "Craiova, Romania (Remote)",
+        "Mecafix CNC",
+        "Craiova, Romania",
         "Software Developer - C# / Python",
         "Sep 2022 - Nov 2023 | Part-time",
         [
@@ -293,7 +289,7 @@ def build():
     section(story, style, "EDUCATION")
     story.append(Paragraph("Faculty of Automation, Computers and Electronics | University of Craiova", style["company"]))
     story.append(Paragraph("Master's degree, Artificial Intelligence and Applied Computing | Aug 2026 - Jul 2028", style["meta"]))
-    story.append(Paragraph("Bachelor of Engineering, Computer Science and Information Technology | Sept 2022 - Jul 2026", style["meta"]))
+    story.append(Paragraph("Bachelor of Engineering, Computer Science and Information Technology | Sep 2022 - Jul 2026", style["meta"]))
 
     section(story, style, "CERTIFICATIONS")
     certs = [
