@@ -229,11 +229,10 @@ def build():
         "Jul 2024 - Present | Full-time",
         [
             "Engineer and support production .NET 8 services, REST APIs and Angular features for a distributed insurance platform serving the UK market.",
-            "Delivered .NET 8 backend services and Angular features for a trading application using dependency injection, Clean Architecture, automated testing and code reviews.",
+            "Deliver .NET 8 backend services and Angular features across the insurance platform, using dependency injection, Clean Architecture, automated testing and code reviews.",
             "Design and implement asynchronous domain workflows with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
-            "Model event-sourced workflows with CQRS, MediatR, Domain-Driven Design, Marten and PostgreSQL; build operational and search views in Elasticsearch.",
-            "Own work through delivery and operations, including unit and integration testing, Azure CI/CD releases, incident analysis and reliability improvements.",
-            "Work in an Agile/Scrum team across the full SDLC, from refinement and design through code review, testing and production support.",
+            "Model event-sourced insurance domain workflows with CQRS, MediatR, Domain-Driven Design, Marten and PostgreSQL; build operational and search views in Elasticsearch.",
+            "Own features from delivery through production, including automated testing, Azure releases and incident analysis.",
         ],
     )
     job(
@@ -244,10 +243,11 @@ def build():
         "AI Solutions Engineer &amp; Co-CTO",
         "Mar 2026 - Present | Part-time",
         [
-            "Co-lead technical architecture and build full-stack AI product features and workflow automations for service businesses.",
+            "Co-lead technical architecture and build full-stack AI product features and Python workflow automations for service businesses.",
             "Deliver React, Next.js and TypeScript interfaces integrated with REST APIs, webhooks, CRM and booking workflows.",
-            "Implement voice and chat agent flows with LLM integration and prompt engineering for customer conversations, lead follow-up and multi-channel messaging.",
+            "Implement voice and chat agent flows in Python with LLM integration and prompt engineering for customer conversations, lead follow-up and multi-channel messaging.",
             "Harden AI workflows with context management, guardrails, human handoff, testing and reliability controls.",
+            "Build Python services and automation scripts that connect third-party APIs, webhooks and CRM data into automated business workflows.",
         ],
     )
     job(
@@ -273,9 +273,8 @@ def build():
         [
             "Developed a Windows desktop application in C#/.NET for automating and orchestrating production-preparation workflows in a metalworking and CNC environment.",
             "Integrated Python scripts and CLI-based utilities for file processing, job validation, data parsing and report generation.",
-            "Implemented process execution and orchestration, command-line argument management, stdout/stderr capture, asynchronous background tasks, logging, validation and error handling.",
+            "Implemented process orchestration, background tasks, logging, validation and error handling.",
             "Built a graphical interface that allowed users to configure, launch and monitor automation workflows without interacting directly with command-line tools.",
-            "Structured reusable and maintainable components using OOP, SOLID principles, async/await, dependency injection and configuration management.",
         ],
     )
     story.append(
