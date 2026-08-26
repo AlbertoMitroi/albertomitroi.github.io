@@ -8,7 +8,7 @@ from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,7 +47,7 @@ def styles():
             fontSize=8.6,
             leading=11,
             textColor=GRAY,
-            spaceAfter=7,
+            spaceAfter=8,
         ),
         "section": ParagraphStyle(
             "Section",
@@ -56,16 +56,16 @@ def styles():
             fontSize=10.2,
             leading=12,
             textColor=NAVY,
-            spaceBefore=6,
-            spaceAfter=3,
+            spaceBefore=8,
+            spaceAfter=4,
             keepWithNext=True,
         ),
         "body": ParagraphStyle(
             "Body",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=8.5,
-            leading=10.7,
+            fontSize=9,
+            leading=11.6,
             textColor=NAVY,
             alignment=TA_LEFT,
             spaceAfter=3,
@@ -74,8 +74,8 @@ def styles():
             "Skills",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=8.2,
-            leading=10.2,
+            fontSize=8.5,
+            leading=10.8,
             textColor=NAVY,
             spaceAfter=2,
         ),
@@ -83,10 +83,10 @@ def styles():
             "Company",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=9.4,
-            leading=11.2,
+            fontSize=9.8,
+            leading=11.8,
             textColor=NAVY,
-            spaceBefore=4,
+            spaceBefore=5,
             spaceAfter=1,
             keepWithNext=True,
         ),
@@ -94,18 +94,18 @@ def styles():
             "Meta",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=8.1,
-            leading=9.8,
+            fontSize=8.4,
+            leading=10.2,
             textColor=GRAY,
-            spaceAfter=2,
+            spaceAfter=1.5,
             keepWithNext=True,
         ),
         "bullet": ParagraphStyle(
             "Bullet",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=8.25,
-            leading=10.2,
+            fontSize=8.5,
+            leading=10.7,
             textColor=NAVY,
             leftIndent=9,
             firstLineIndent=-7,
@@ -129,18 +129,29 @@ def job(story, style, company, location, title, period, bullets):
         bullet(story, style, item)
 
 
-def project(story, style, name, context, bullets):
+def project(story, style, name, context, bullets, technologies):
     story.append(Paragraph(name, style["company"]))
     story.append(Paragraph(context, style["meta"]))
     for item in bullets:
         bullet(story, style, item)
+    story.append(Paragraph(f"<b>Technologies:</b> {technologies}", style["meta"]))
 
 
 def set_metadata(canvas, document):
     canvas.setTitle("Alberto Mitroi - Full Stack Software Engineer")
     canvas.setAuthor("Alberto Mitroi")
-    canvas.setSubject("Full Stack Software Engineer resume: C# .NET Azure React TypeScript Applied AI")
-    canvas.setKeywords("Full Stack Software Engineer, C#, .NET, ASP.NET Core, Microsoft Azure, React, Next.js, TypeScript, Angular, Distributed Systems, Applied AI, RAG, Azure OpenAI")
+    canvas.setSubject("Full Stack Software Engineer with 4 years of hands-on C# and .NET development experience")
+    canvas.setKeywords("C# Developer, .NET Developer, Full Stack Software Engineer, 4 years C# experience, .NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Entity Framework Core, LINQ, async await, dependency injection, microservices, Microsoft Azure, Angular, React, Next.js, TypeScript, Kafka, RabbitMQ, Azure Service Bus, CQRS, Domain-Driven Design, Clean Architecture, Event Sourcing, PostgreSQL, SQL Server, Docker, CI/CD, Azure DevOps, GitHub Actions, Azure OpenAI, RAG")
+
+
+def decorate_page(canvas, document):
+    set_metadata(canvas, document)
+    canvas.saveState()
+    canvas.setFillColor(GRAY)
+    canvas.setFont("Helvetica", 7.5)
+    canvas.drawString(16 * mm, 7 * mm, "Alberto Mitroi | Full Stack Software Engineer")
+    canvas.drawRightString(A4[0] - 16 * mm, 7 * mm, f"Page {document.page}")
+    canvas.restoreState()
 
 
 def build():
@@ -150,8 +161,8 @@ def build():
         pagesize=A4,
         leftMargin=16 * mm,
         rightMargin=16 * mm,
-        topMargin=8 * mm,
-        bottomMargin=8 * mm,
+        topMargin=10 * mm,
+        bottomMargin=14 * mm,
         title="Alberto Mitroi - Full Stack Software Engineer",
         author="Alberto Mitroi",
         subject="Full Stack Software Engineer resume",
@@ -161,8 +172,10 @@ def build():
         Paragraph("Alberto Mitroi", style["name"]),
         Paragraph("Full Stack Software Engineer | C#/.NET, Azure, React, TypeScript | Applied AI", style["role"]),
         Paragraph(
-            "Craiova, Romania | mitroialbertoionut@gmail.com | "
+            'Craiova, Romania | <link href="tel:+40745915532">+40 745 915 532</link> | '
+            '<link href="mailto:mitroialbertoionut@gmail.com">mitroialbertoionut@gmail.com</link> | '
             '<link href="https://www.linkedin.com/in/mitroialberto/">linkedin.com/in/mitroialberto</link> | '
+            "<br/>"
             '<link href="https://albertomitroi.github.io/">albertomitroi.github.io</link> | '
             '<link href="https://github.com/AlbertoMitroi">github.com/AlbertoMitroi</link>',
             style["contact"],
@@ -172,10 +185,10 @@ def build():
     section(story, style, "SUMMARY")
     story.append(
         Paragraph(
-            "Full Stack Software Engineer with experience in C#/.NET 8, ASP.NET Core, Microsoft Azure, React, Next.js, "
-            "TypeScript and Angular. Builds REST APIs, distributed services and user-facing web applications. Work includes "
-            "microservices, event-driven architecture, Kafka, RabbitMQ, CQRS, Domain-Driven Design, event sourcing, Docker, "
-            "CI/CD, Azure DevOps and applied AI with Azure OpenAI, retrieval-augmented generation (RAG) and LLM workflows.",
+            "Full Stack Software Engineer with 4 years of hands-on C#/.NET development experience. Builds production-facing .NET "
+            "services, REST APIs, desktop automation tools and React/Angular applications. Experience spans distributed systems, "
+            "event-driven architecture, Microsoft Azure, DevOps, workflow automation and applied AI across product teams, startup "
+            "delivery and independent software projects.",
             style["body"],
         )
     )
@@ -183,11 +196,12 @@ def build():
     section(story, style, "CORE SKILLS")
     skill_lines = [
         ("Languages", "C#, TypeScript, JavaScript, Python, SQL"),
-        ("Backend", ".NET 8, ASP.NET Core, REST APIs, Microservices, Entity Framework Core"),
-        ("Frontend", "React, Next.js, Angular"),
-        ("Cloud and delivery", "Microsoft Azure, Azure DevOps, Docker, CI/CD"),
-        ("Distributed systems", "Kafka, RabbitMQ, Event-Driven Architecture, CQRS, Domain-Driven Design, Event Sourcing, Marten, Elasticsearch"),
-        ("Applied AI", "Azure OpenAI, RAG, Large Language Models, Semantic Search, AI Agents"),
+        ("C# and .NET", ".NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Entity Framework Core, LINQ, async/await, Dependency Injection, MediatR, FluentValidation, xUnit"),
+        ("Architecture", "Microservices, Domain-Driven Design, CQRS, Clean Architecture, Vertical Slice Architecture, Event-Driven Architecture, Event Sourcing, SOLID"),
+        ("Messaging and data", "Kafka, RabbitMQ, Azure Service Bus, PostgreSQL, SQL Server, Marten, Elasticsearch, Redis"),
+        ("Frontend", "Angular, React, Next.js, TypeScript, JavaScript, tRPC, Prisma ORM"),
+        ("Azure and DevOps", "Microsoft Azure, Container Apps, App Service, Azure SQL, Blob Storage, Key Vault, Application Insights, Azure DevOps, GitHub Actions, CI/CD, Docker, Git"),
+        ("Applied AI", "Azure OpenAI, RAG, Large Language Models, Semantic Search, Embeddings, Conversational AI, Voice AI, AI Agents"),
     ]
     for label, value in skill_lines:
         story.append(Paragraph(f"<b>{label}:</b> {value}", style["skills"]))
@@ -199,12 +213,13 @@ def build():
         "Encora Inc. (part of Coforge)",
         "Craiova, Romania (Hybrid)",
         ".NET Full Stack Developer",
-        "Oct 2024 - Present | Full-time",
+        "Jul 2024 - Present | Full-time",
         [
-            "Develop .NET 8 services, REST APIs and Angular features for a distributed insurance platform serving the UK market.",
-            "Build asynchronous workflows with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
-            "Apply CQRS, Domain-Driven Design and event sourcing with Marten and PostgreSQL; use Elasticsearch for operational and search views.",
-            "Contribute to testing, Azure delivery, incident analysis and operational reliability within the product team.",
+            "Engineer and support production .NET 8 services, REST APIs and Angular features for a distributed insurance platform serving the UK market.",
+            "Delivered .NET 8 backend services and Angular features for a trading application using dependency injection, Clean Architecture, automated testing and code reviews.",
+            "Design and implement asynchronous domain workflows with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
+            "Model event-sourced workflows with CQRS, Domain-Driven Design, Marten and PostgreSQL; build operational and search views in Elasticsearch.",
+            "Own work through delivery and operations, including automated testing, Azure releases, incident analysis and reliability improvements.",
         ],
     )
     job(
@@ -215,22 +230,10 @@ def build():
         "AI Solutions Engineer &amp; Co-CTO",
         "Mar 2026 - Present | Part-time",
         [
-            "Build full-stack AI features and workflow automations for service businesses.",
-            "Develop React, Next.js and TypeScript interfaces connected to APIs, webhooks, CRM and booking workflows.",
-            "Connect voice and chat agents to customer conversations, follow-up and messaging processes.",
-            "Implement context management, guardrails, human handoff, testing and reliability controls.",
-        ],
-    )
-    job(
-        story,
-        style,
-        "Encora Inc.",
-        "Craiova, Romania (Hybrid)",
-        ".NET Full Stack Developer Intern",
-        "Jul 2024 - Oct 2024",
-        [
-            "Contributed to a trading application using .NET 8 backend services and Angular frontend features.",
-            "Used Azure DevOps, Git, CI/CD, dependency injection and automated testing in a professional delivery workflow.",
+            "Co-lead technical architecture and build full-stack AI product features and workflow automations for service businesses.",
+            "Deliver React, Next.js and TypeScript interfaces integrated with APIs, webhooks, CRM and booking workflows.",
+            "Implement voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
+            "Harden AI workflows with context management, guardrails, human handoff, testing and reliability controls.",
         ],
     )
     job(
@@ -241,40 +244,8 @@ def build():
         "Software Automation Intern",
         "Nov 2023 - Jul 2024",
         [
-            "Built internal automation scripts and desktop tools with Python, C# and VBA.",
-            "Supported software testing for automotive control systems and worked with engineers to improve validation workflows.",
-        ],
-    )
-
-    section(story, style, "PROJECTS")
-    project(
-        story,
-        style,
-        "EShopMicroservices",
-        "Public repository: github.com/AlbertoMitroi/EShopMicroservices",
-        [
-            "Built a .NET 8 and C# 12 e-commerce reference architecture using microservices, ASP.NET Core, Entity Framework Core, DDD and CQRS.",
-            "Implemented RabbitMQ and Kafka messaging, Docker packaging, GitHub Actions and Azure-oriented deployment patterns.",
-        ],
-    )
-    project(
-        story,
-        style,
-        "Oryntech.AI",
-        "Full-stack product and applied AI work",
-        [
-            "Develop React, Next.js and TypeScript product interfaces for AI-assisted service-business workflows.",
-            "Integrate conversational and voice agents with CRM, email, SMS, booking, analytics, APIs and webhooks.",
-        ],
-    )
-    project(
-        story,
-        style,
-        "TopZonal",
-        "In development",
-        [
-            "Build a mobile-first local-services product with React, Next.js, TypeScript and .NET components.",
-            "Prototype semantic search, vector retrieval and RAG-assisted discovery with Azure-oriented infrastructure.",
+            "Built Python, C# and VBA automation scripts and desktop tools that reduced repetitive manual engineering work.",
+            "Tested automotive control-system software and improved validation workflows in collaboration with engineering teams.",
         ],
     )
 
@@ -285,14 +256,66 @@ def build():
 
     section(story, style, "CERTIFICATIONS")
     certs = [
-        "Microsoft Certified: Azure Developer Associate (AZ-204) | Microsoft | Credential ID 42EFC399D66B1E5C | Mar 2026",
-        "Introduction to Generative AI for Software Development | DeepLearning.AI | Credential ID G503GKSPZ3IO | Jul 2025",
-        "Generative AI with Large Language Models | Amazon Web Services | Credential ID A3COZZP9ND79 | Jul 2025",
+        'Microsoft Certified: Azure Developer Associate (AZ-204) | Microsoft | <link href="https://learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c">Credential ID 42EFC399D66B1E5C</link> | Mar 2026',
+        'Introduction to Generative AI for Software Development | DeepLearning.AI | <link href="https://www.coursera.org/account/accomplishments/verify/G503GKSPZ3IO">Credential ID G503GKSPZ3IO</link> | Jul 2025',
+        'Generative AI with Large Language Models | Amazon Web Services | <link href="https://www.coursera.org/account/accomplishments/verify/A3COZZP9ND79">Credential ID A3COZZP9ND79</link> | Jul 2025',
     ]
     for cert in certs:
         bullet(story, style, cert)
 
-    document.build(story, onFirstPage=set_metadata, onLaterPages=set_metadata)
+    story.append(PageBreak())
+
+    section(story, style, "PROJECT EXPERIENCE")
+    project(
+        story,
+        style,
+        "C# Desktop Automation &amp; CLI Controller",
+        "Independent C#/.NET Developer | Sep 2022 - Present | Part-time",
+        [
+            "Built a Windows desktop application in C#/.NET that launches, controls and monitors CLI-based automation workflows from a graphical interface.",
+            "Implemented process execution and orchestration, command and argument management, standard output/error capture, background tasks, logging, validation and error handling.",
+            "Structured reusable automation components using OOP, SOLID, async/await, dependency injection, configuration and Git-based version control.",
+        ],
+        "C#, .NET, Windows desktop development, CLI automation, process orchestration, async/await, OOP, SOLID, Dependency Injection, Logging, Git",
+    )
+    project(
+        story,
+        style,
+        "EShopMicroservices",
+        '<link href="https://github.com/AlbertoMitroi/EShopMicroservices">github.com/AlbertoMitroi/EShopMicroservices</link>',
+        [
+            "Built a .NET 8 and C# 12 e-commerce reference architecture with ASP.NET Core, Entity Framework Core and REST APIs.",
+            "Applied Domain-Driven Design, CQRS, Clean Architecture, Vertical Slice Architecture, MediatR, FluentValidation and automated testing.",
+            "Implemented RabbitMQ, Kafka and Redis communication, Docker packaging, GitHub Actions CI/CD and Azure-oriented deployment patterns.",
+        ],
+        ".NET 8, C# 12, ASP.NET Core, Web API, Entity Framework Core, Microservices, DDD, CQRS, MediatR, FluentValidation, RabbitMQ, Kafka, Redis, Docker, GitHub Actions, Azure",
+    )
+    project(
+        story,
+        style,
+        "Oryntech.AI",
+        '<link href="https://www.oryntech.ai">oryntech.ai</link> | Full-stack product and applied AI work',
+        [
+            "Develop React, Next.js and TypeScript interfaces for AI-assisted service-business workflows.",
+            "Build conversational and voice-agent features with LLM integration, context management, guardrails, human handoff and reliability controls.",
+            "Integrate CRM, email, SMS, booking, analytics, APIs and webhooks into multi-channel automation workflows.",
+        ],
+        "React, Next.js, TypeScript, Tailwind CSS, Framer Motion, OpenAI, LLM Integration, Conversational AI, Voice AI, CRM, APIs, Webhooks, Workflow Automation",
+    )
+    project(
+        story,
+        style,
+        "TopZonal",
+        "Independent full-stack product | In development",
+        [
+            "Build a mobile-first local-services PWA with React, Next.js, TypeScript, tRPC, Prisma ORM and a monorepo architecture.",
+            "Design Azure-oriented components using Docker, Azure Container Apps, Azure SQL, Blob Storage and Azure Key Vault.",
+            "Prototype semantic search, embeddings, vector retrieval and RAG-assisted discovery with Azure OpenAI.",
+        ],
+        "React, Next.js, TypeScript, T3 Stack, tRPC, Prisma ORM, PWA, Docker, Azure Container Apps, Azure SQL, Blob Storage, Key Vault, Azure OpenAI, RAG",
+    )
+
+    document.build(story, onFirstPage=decorate_page, onLaterPages=decorate_page)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ window.cvData = {
     name: "Alberto Mitroi",
     preferredName: "Alberto Mitroi",
     role: "Full Stack Software Engineer",
-    headline: "C#/.NET and Azure engineer working across React, Next.js, TypeScript, distributed systems and applied AI.",
+    headline: "Full Stack Software Engineer with 4 years of hands-on C#/.NET development experience across Azure, modern web applications, automation and applied AI.",
     location: "Craiova, Romania",
     workMode: "Romania / EU remote",
     email: "mitroialbertoionut@gmail.com",
@@ -21,8 +21,8 @@ window.cvData = {
     "Applied AI products"
   ],
   summary: [
-    "Full Stack Software Engineer working across C#/.NET, Microsoft Azure, React, Next.js, TypeScript and Angular.",
-    "Experience includes REST APIs, distributed services, event-driven workflows, cloud delivery and AI features such as conversational agents, semantic search and RAG."
+    "Full Stack Software Engineer with 4 years of hands-on C#/.NET development experience.",
+    "Builds production-facing .NET services, REST APIs, desktop automation tools and React/Angular applications across distributed systems, Azure delivery, workflow automation and applied AI."
   ],
   aboutHighlights: [
     "C#/.NET and ASP.NET Core",
@@ -45,15 +45,16 @@ window.cvData = {
       company: "Encora Inc. (part of Coforge)",
       companyLogo: "assets/encora.jpeg",
       role: ".NET Full Stack Developer",
-      period: "Oct 2024 - Present",
+      period: "Jul 2024 - Present",
       location: "Craiova, Romania (Hybrid)",
       website: "https://www.coforge.com/",
-      intro: "Develop .NET 8 services and Angular features for a distributed insurance platform serving the UK market.",
+      intro: "Engineer and support production .NET 8 services and Angular features for a distributed insurance platform serving the UK market.",
       bullets: [
-        "Develop REST APIs and domain workflows in C#/.NET 8 using CQRS and Domain-Driven Design.",
+        "Delivered .NET 8 backend services and Angular features for a trading application using dependency injection, Clean Architecture, automated testing and code reviews.",
+        "Design and implement REST APIs and domain workflows in C#/.NET 8 using CQRS and Domain-Driven Design.",
         "Build asynchronous integrations with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
-        "Use Marten and PostgreSQL for event-sourced data and Elasticsearch for operational and search views.",
-        "Deliver Angular features and contribute to testing, Azure delivery, troubleshooting and operational support."
+        "Model event-sourced workflows with Marten and PostgreSQL; build operational and search views in Elasticsearch.",
+        "Own work through delivery and operations, including Angular features, automated testing, Azure releases, incident analysis and reliability improvements."
       ]
     },
     {
@@ -63,27 +64,12 @@ window.cvData = {
       period: "Mar 2026 - Present",
       location: "Craiova, Romania (Remote, part-time)",
       website: "https://www.oryntech.ai",
-      intro: "Build full-stack AI features and workflow automations for service businesses.",
+      intro: "Co-lead technical architecture and build full-stack AI product features and workflow automations for service businesses.",
       bullets: [
-        "Develop React, Next.js and TypeScript interfaces connected to APIs, webhooks, CRM and booking workflows.",
-        "Connect voice and chat agents to customer conversations, follow-up and messaging processes.",
-        "Implement context management, guardrails, human handoff, testing and reliability controls.",
-        "Contribute to architecture and technical decisions."
-      ]
-    },
-    {
-      company: "Encora Inc.",
-      companyLogo: "assets/encora.jpeg",
-      role: ".NET Full Stack Developer Intern",
-      period: "Jul 2024 - Oct 2024",
-      location: "Craiova, Romania (Hybrid)",
-      website: "https://www.encora.com/",
-      intro: "Worked on a trading application in a professional development team.",
-      bullets: [
-        "Contributed to a trading application using .NET 8 for backend services and Angular for frontend delivery.",
-        "Implemented features using dependency injection and Clean Architecture conventions.",
-        "Used Azure DevOps for task management, Git-based version control, and CI/CD fundamentals.",
-        "Actively participated in Scrum sprints, code reviews, and daily stand-ups."
+        "Deliver React, Next.js and TypeScript interfaces integrated with APIs, webhooks, CRM and booking workflows.",
+        "Implement voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
+        "Harden AI workflows with context management, guardrails, human handoff, testing and reliability controls.",
+        "Drive architecture and technical decisions across product integrations and delivery."
       ]
     },
     {
@@ -97,8 +83,23 @@ window.cvData = {
       bullets: [
         "Built custom automation scripts using Python and C#, reducing manual workload across repetitive engineering tasks.",
         "Created internal GUI applications with VBA and C# to simplify technical processes and improve team productivity.",
-        "Conducted software testing for automotive control systems to support high reliability and stable validation outcomes.",
-        "Worked closely with engineering teams to analyze requirements and improve testing efficiency."
+        "Tested automotive control-system software to support reliable validation outcomes.",
+        "Improved validation workflows in collaboration with engineering teams."
+      ]
+    },
+    {
+      company: "C# Desktop Automation & CLI Controller",
+      companyLogo: "assets/github-142-svgrepo-com.svg",
+      role: "Independent C#/.NET Developer",
+      period: "Sep 2022 - Present",
+      location: "Craiova, Romania (Part-time)",
+      website: "https://github.com/AlbertoMitroi",
+      intro: "Built a Windows desktop application in C#/.NET that launches, controls and monitors CLI-based automation workflows from a graphical interface.",
+      bullets: [
+        "Implemented process execution and orchestration for CLI-based automation tasks.",
+        "Handled commands and arguments, standard output/error capture, background tasks, logging, validation and error handling.",
+        "Structured reusable automation components using OOP, SOLID, async/await and dependency injection.",
+        "Used configuration and Git-based version control to maintain and extend the automation workflows."
       ]
     }
   ],
