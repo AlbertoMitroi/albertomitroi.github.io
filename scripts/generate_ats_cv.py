@@ -8,7 +8,7 @@ from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
-from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate
+from reportlab.platypus import Paragraph, SimpleDocTemplate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -140,8 +140,22 @@ def project(story, style, name, context, bullets, technologies):
 def set_metadata(canvas, document):
     canvas.setTitle("Alberto Mitroi - Full Stack Software Engineer")
     canvas.setAuthor("Alberto Mitroi")
-    canvas.setSubject("Full Stack Software Engineer with 4 years of hands-on C# and .NET development experience")
-    canvas.setKeywords("C# Developer, .NET Developer, Full Stack Software Engineer, 4 years C# experience, .NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Entity Framework Core, LINQ, async await, dependency injection, microservices, Microsoft Azure, Angular, React, Next.js, TypeScript, Kafka, RabbitMQ, Azure Service Bus, CQRS, Domain-Driven Design, Clean Architecture, Event Sourcing, PostgreSQL, SQL Server, Docker, CI/CD, Azure DevOps, GitHub Actions, Azure OpenAI, RAG")
+    canvas.setSubject("Full Stack Software Engineer with 4 years of hands-on C#, .NET and Python development experience")
+    canvas.setKeywords(
+        "C# Developer, .NET Developer, .NET Software Engineer, Full Stack Developer, Full Stack Software Engineer, "
+        "Backend Developer, Software Engineer, Software Developer, Python Developer, Automation Developer, "
+        "4 years C# experience, .NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Minimal APIs, "
+        "Entity Framework Core, LINQ, async await, multithreading, dependency injection, MediatR, FluentValidation, "
+        "xUnit, unit testing, integration testing, TDD, code review, SOLID, OOP, design patterns, "
+        "microservices, distributed systems, Microsoft Azure, Azure Developer Associate, AZ-204, "
+        "Angular, React, Next.js, TypeScript, JavaScript, HTML, CSS, "
+        "Kafka, RabbitMQ, Azure Service Bus, message queues, event-driven architecture, "
+        "CQRS, Domain-Driven Design, Clean Architecture, Vertical Slice Architecture, Event Sourcing, Marten, "
+        "PostgreSQL, SQL Server, T-SQL, Elasticsearch, Redis, "
+        "Docker, containers, CI/CD, Azure DevOps, GitHub Actions, Git, Agile, Scrum, SDLC, "
+        "Python, CLI automation, scripting, process orchestration, Windows desktop development, GUI, VBA, "
+        "Azure OpenAI, LLM, RAG, semantic search, embeddings, conversational AI, voice AI, AI agents, prompt engineering"
+    )
 
 
 def decorate_page(canvas, document):
@@ -170,7 +184,7 @@ def build():
 
     story = [
         Paragraph("Alberto Mitroi", style["name"]),
-        Paragraph("Full Stack Software Engineer | C#/.NET, Azure, React, TypeScript | Applied AI", style["role"]),
+        Paragraph("Full Stack Software Engineer | C#/.NET Developer | Azure, Angular, React, TypeScript, Python | Applied AI", style["role"]),
         Paragraph(
             'Craiova, Romania | <link href="tel:+40745915532">+40 745 915 532</link> | '
             '<link href="mailto:mitroialbertoionut@gmail.com">mitroialbertoionut@gmail.com</link> | '
@@ -185,23 +199,26 @@ def build():
     section(story, style, "SUMMARY")
     story.append(
         Paragraph(
-            "Full Stack Software Engineer with 4 years of hands-on C#/.NET development experience. Builds production-facing .NET "
-            "services, REST APIs, desktop automation tools and React/Angular applications. Experience spans distributed systems, "
-            "event-driven architecture, Microsoft Azure, DevOps, workflow automation and applied AI across product teams, startup "
-            "delivery and independent software projects.",
+            "Full Stack Software Engineer with 4 years of hands-on C#/.NET development experience and a strong Python automation "
+            "background. Builds production-facing .NET 8 services, REST APIs, microservices, desktop automation tools and "
+            "React/Angular applications. Experience spans distributed and event-driven systems, Microsoft Azure, Docker, CI/CD, "
+            "unit and integration testing, workflow automation and applied AI across product teams, startup delivery and "
+            "independent software development. Microsoft Certified: Azure Developer Associate (AZ-204).",
             style["body"],
         )
     )
 
     section(story, style, "CORE SKILLS")
     skill_lines = [
-        ("Languages", "C#, TypeScript, JavaScript, Python, SQL"),
+        ("Languages", "C#, Python, TypeScript, JavaScript, SQL, VBA, HTML, CSS"),
         ("C# and .NET", ".NET 8, .NET Core, ASP.NET Core, Web API, REST APIs, Entity Framework Core, LINQ, async/await, Dependency Injection, MediatR, FluentValidation, xUnit"),
-        ("Architecture", "Microservices, Domain-Driven Design, CQRS, Clean Architecture, Vertical Slice Architecture, Event-Driven Architecture, Event Sourcing, SOLID"),
-        ("Messaging and data", "Kafka, RabbitMQ, Azure Service Bus, PostgreSQL, SQL Server, Marten, Elasticsearch, Redis"),
-        ("Frontend", "Angular, React, Next.js, TypeScript, JavaScript, tRPC, Prisma ORM"),
+        ("Architecture", "Microservices, Domain-Driven Design, CQRS, Clean Architecture, Vertical Slice Architecture, Event-Driven Architecture, Event Sourcing, SOLID, OOP, Design Patterns"),
+        ("Messaging and data", "Kafka, RabbitMQ, Azure Service Bus, PostgreSQL, SQL Server, Marten, Elasticsearch, Redis, Database Modeling, Migrations"),
+        ("Frontend", "Angular, React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, tRPC, Prisma ORM"),
         ("Azure and DevOps", "Microsoft Azure, Container Apps, App Service, Azure SQL, Blob Storage, Key Vault, Application Insights, Azure DevOps, GitHub Actions, CI/CD, Docker, Git"),
-        ("Applied AI", "Azure OpenAI, RAG, Large Language Models, Semantic Search, Embeddings, Conversational AI, Voice AI, AI Agents"),
+        ("Automation and scripting", "Python, CLI automation, process orchestration, Windows desktop development, GUI development, file processing, data parsing, report generation, logging"),
+        ("Applied AI", "Azure OpenAI, RAG, Large Language Models, Semantic Search, Embeddings, Conversational AI, Voice AI, AI Agents, Prompt Engineering"),
+        ("Practices", "Agile, Scrum, SDLC, Code Reviews, Unit Testing, Integration Testing, Debugging, Observability, Technical Documentation"),
     ]
     for label, value in skill_lines:
         story.append(Paragraph(f"<b>{label}:</b> {value}", style["skills"]))
@@ -218,8 +235,9 @@ def build():
             "Engineer and support production .NET 8 services, REST APIs and Angular features for a distributed insurance platform serving the UK market.",
             "Delivered .NET 8 backend services and Angular features for a trading application using dependency injection, Clean Architecture, automated testing and code reviews.",
             "Design and implement asynchronous domain workflows with Kafka, RabbitMQ and Azure Service Bus across a microservices architecture.",
-            "Model event-sourced workflows with CQRS, Domain-Driven Design, Marten and PostgreSQL; build operational and search views in Elasticsearch.",
-            "Own work through delivery and operations, including automated testing, Azure releases, incident analysis and reliability improvements.",
+            "Model event-sourced workflows with CQRS, MediatR, Domain-Driven Design, Marten and PostgreSQL; build operational and search views in Elasticsearch.",
+            "Own work through delivery and operations, including unit and integration testing, Azure CI/CD releases, incident analysis and reliability improvements.",
+            "Work in an Agile/Scrum team across the full SDLC, from refinement and design through code review, testing and production support.",
         ],
     )
     job(
@@ -231,8 +249,8 @@ def build():
         "Mar 2026 - Present | Part-time",
         [
             "Co-lead technical architecture and build full-stack AI product features and workflow automations for service businesses.",
-            "Deliver React, Next.js and TypeScript interfaces integrated with APIs, webhooks, CRM and booking workflows.",
-            "Implement voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
+            "Deliver React, Next.js and TypeScript interfaces integrated with REST APIs, webhooks, CRM and booking workflows.",
+            "Implement voice and chat agent flows with LLM integration and prompt engineering for customer conversations, lead follow-up and multi-channel messaging.",
             "Harden AI workflows with context management, guardrails, human handoff, testing and reliability controls.",
         ],
     )
@@ -241,12 +259,35 @@ def build():
         style,
         "FORVIA HELLA",
         "Craiova, Romania (Hybrid)",
-        "Software Automation Intern",
+        "Software Automation Developer",
         "Nov 2023 - Jul 2024",
         [
-            "Built Python, C# and VBA automation scripts and desktop tools that reduced repetitive manual engineering work.",
+            "Developed C#, .NET and Python automation tools and scripts that reduced repetitive manual engineering work.",
+            "Built internal desktop GUI applications with C# and VBA, and automated data processing, file handling and report generation.",
             "Tested automotive control-system software and improved validation workflows in collaboration with engineering teams.",
         ],
+    )
+    job(
+        story,
+        style,
+        "Independent Developer",
+        "Craiova, Romania (Remote)",
+        "Software Developer - C# / Python",
+        "Sep 2022 - Nov 2023 | Part-time",
+        [
+            "Developed a Windows desktop application in C#/.NET for automating and orchestrating production-preparation workflows in a metalworking and CNC environment.",
+            "Integrated Python scripts and CLI-based utilities for file processing, job validation, data parsing and report generation.",
+            "Implemented process execution and orchestration, command-line argument management, stdout/stderr capture, asynchronous background tasks, logging, validation and error handling.",
+            "Built a graphical interface that allowed users to configure, launch and monitor automation workflows without interacting directly with command-line tools.",
+            "Structured reusable and maintainable components using OOP, SOLID principles, async/await, dependency injection and configuration management.",
+        ],
+    )
+    story.append(
+        Paragraph(
+            "<b>Technologies:</b> C#, .NET, Python, Windows desktop development, CLI automation, process orchestration, "
+            "async/await, OOP, SOLID, dependency injection, logging, Git",
+            style["meta"],
+        )
     )
 
     section(story, style, "EDUCATION")
@@ -263,21 +304,7 @@ def build():
     for cert in certs:
         bullet(story, style, cert)
 
-    story.append(PageBreak())
-
     section(story, style, "PROJECT EXPERIENCE")
-    project(
-        story,
-        style,
-        "C# Desktop Automation &amp; CLI Controller",
-        "Independent C#/.NET Developer | Sep 2022 - Present | Part-time",
-        [
-            "Built a Windows desktop application in C#/.NET that launches, controls and monitors CLI-based automation workflows from a graphical interface.",
-            "Implemented process execution and orchestration, command and argument management, standard output/error capture, background tasks, logging, validation and error handling.",
-            "Structured reusable automation components using OOP, SOLID, async/await, dependency injection, configuration and Git-based version control.",
-        ],
-        "C#, .NET, Windows desktop development, CLI automation, process orchestration, async/await, OOP, SOLID, Dependency Injection, Logging, Git",
-    )
     project(
         story,
         style,
