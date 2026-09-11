@@ -646,7 +646,7 @@ learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c
 
 ## EDUCATION
 
-### University of Craiova
+### Faculty of Automation, Computers and Electronics, Craiova
 
 Master's degree, Artificial Intelligence and Applied Computing
 
@@ -756,7 +756,7 @@ learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c
 
 EDUCATION
 
-University of Craiova
+Faculty of Automation, Computers and Electronics, Craiova
 Master's degree, Artificial Intelligence and Applied Computing
 Aug 2026 - Present | Expected Jul 2028
 

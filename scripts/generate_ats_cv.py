@@ -94,7 +94,7 @@ def content():
                ('body', 'Microsoft Certified: Azure Developer Associate (AZ-204) | Microsoft | Mar 2026'),
                ('credential_link', 'learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c'),
                ('section', 'EDUCATION'),
-               ('company', 'University of Craiova'),
+               ('company', 'Faculty of Automation, Computers and Electronics, Craiova'),
                ('body', "Master's degree, Artificial Intelligence and Applied Computing"),
                ('meta', 'Aug 2026 - Present | Expected Jul 2028'),
                ('body', 'Bachelor of Engineering, Computer Science and Information Technology'),

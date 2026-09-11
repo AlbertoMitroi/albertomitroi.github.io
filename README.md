@@ -1,72 +1,48 @@
-# Alberto CV / Portfolio (GitHub Pages Ready)
+# Alberto Mitroi / Portfolio
 
-Acest proiect este gândit să meargă direct pe **GitHub Pages** și folosește un **single source of truth**:
+Portofoliu static pentru GitHub Pages, cu un CV PDF generat separat în Python.
 
-- `data.js` = singurul fișier pe care îl modifici
-- `index.html` = structura paginii
-- `styles.css` = design-ul
-- `app.js` = randarea site-ului + generarea CV-ului PDF din aceleași date
+## Structura
 
-## Cum funcționează
+- `data.js`: prezentarea, experiența, proiectele, competențele, certificările și educația.
+- `index.html`: structura paginii, titlurile secțiunilor, metadatele sociale și datele structurate Person.
+- `app.js`: afișarea datelor, navigarea, galeriile și butoanele de descărcare.
+- `styles.css`: aspectul și layout-ul responsive.
+- `scripts/generate_ats_cv.py`: conținutul și generatorul CV-ului ATS.
+- `assets/CV_AlbertoMitroi.pdf`: CV-ul descărcat de vizitatori.
 
-1. Site-ul citește obiectul `window.cvData` din `data.js`
-2. Pagina publică este populată din acest obiect
-3. CV-ul pentru PDF este generat din același obiect
-4. Butonul **Download PDF** încearcă să exporte PDF cu `html2pdf.js`
-5. Dacă exportul nu merge, fallback-ul este `window.print()`
+## Actualizarea conținutului
 
-## Ce trebuie să editezi
+Păstrează textele și datele din `data.js` în acord cu CV-ul din `scripts/generate_ats_cv.py`. Portofoliul poate include galerii și cursuri suplimentare, cu proiectele și prototipurile identificate explicit.
 
-Editează doar:
+Actualizează și textele statice din `index.html`: titlul paginii, descrierea, Open Graph, Twitter, JSON-LD și titlurile secțiunilor. După modificări, actualizează versiunile pentru `data.js` și `app.js` din HTML și versiunea linkului PDF din `app.js`, pentru a evita folosirea conținutului vechi din cache.
 
-- `data.js`
+## Generarea CV-ului
 
-Acolo ai:
-- date personale
-- summary
-- experiență
-- proiecte
-- skills
-- certificări
-- educație
-- linkuri
+Necesită Python 3 și `reportlab`:
 
-## Deploy pe GitHub Pages
-
-### Varianta simplă
-1. Creezi un repo nou pe GitHub
-2. Uploadezi toate fișierele din acest folder în repo
-3. În GitHub mergi la **Settings → Pages**
-4. La **Build and deployment** alegi:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` / root
-5. Salvezi și aștepți publicarea
-
-### Structura proiectului
-```text
-index.html
-styles.css
-app.js
-data.js
-assets/
-  profile.jpg
+```sh
+python3 scripts/generate_ats_cv.py
 ```
 
-## Important
+Generatorul scrie PDF-ul în `assets/CV_AlbertoMitroi.pdf` și versiuni Markdown/plain text alături. Pentru un director de verificare separat:
 
-- `assets/profile.jpg` este extras din screenshot-ul CV-ului și este low-res.
-- Pentru un rezultat mai bun, înlocuiește imaginea cu una mai clară, păstrând același nume de fișier.
-- În `data.js`, certificarea **AZ-204** este prezentată ca obținută, în acord cu profilul LinkedIn și credentialul Microsoft public.
-- CV-ul PDF public se regenerează cu `scripts/generate_ats_cv.py`; sursa folosește un layout single-column optimizat pentru parsare ATS.
+```sh
+python3 scripts/generate_ats_cv.py --output output/pdf/CV_AlbertoMitroi.pdf
+```
 
-## Testare locală
+Verifică PDF-ul înainte de a-l copia în `assets/`. Butoanele de descărcare folosesc PDF-ul static; nu îl generează cu `html2pdf.js`. `app.js` păstrează și un markup HTML separat pentru imprimare.
 
-Poți deschide direct `index.html` în browser.
+## Verificare locală
 
-## Recomandare
+```sh
+python3 -m http.server 3000 --bind 127.0.0.1
+node --check data.js
+node --check app.js
+```
 
-După ce actualizezi datele:
-- împinge modificările în GitHub
-- deschide site-ul publicat
-- apasă **Download PDF**
-- verifică rezultatul final
+Deschide `http://127.0.0.1:3000`, verifică pagina pe desktop și mobil, navigarea, galeriile și descărcarea CV-ului.
+
+## Publicare
+
+GitHub Pages servește fișierele statice din branch-ul și directorul configurate în Settings → Pages. Modificările locale devin publice după commit/push și publicarea GitHub Pages.
