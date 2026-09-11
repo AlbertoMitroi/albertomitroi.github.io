@@ -1,0 +1,103 @@
+Alberto Mitroi
+.NET Software Engineer | C#, Azure, Angular
+Craiova, Romania | +40 745 915 532 | mitroialbertoionut@gmail.com
+linkedin.com/in/mitroialberto | github.com/AlbertoMitroi
+albertomitroi.github.io
+
+SUMMARY
+Software engineer building C# and .NET applications since 2022. Develops production .NET 8 services, REST
+APIs and Angular features for a UK insurance platform. Implements event-sourced domain workflows and
+asynchronous microservice integrations, with ownership through testing, Azure releases and production
+incident analysis. Additional experience in React, Next.js and Python automation.
+Microsoft Certified: Azure Developer Associate (AZ-204) | Mar 2026
+
+PROFESSIONAL EXPERIENCE
+
+Encora Inc.
+.NET Full Stack Engineer | Full-time
+Jul 2024 - Present | Craiova, Romania | Hybrid
+
+- Develop and support .NET 8 services, REST APIs and Angular features for a production insurance platform
+serving the UK market.
+- Implement asynchronous workflows across microservices using Kafka, RabbitMQ and Azure Service Bus.
+- Model event-sourced insurance workflows with CQRS, MediatR, Domain-Driven Design, Marten and
+PostgreSQL; build operational and search views in Elasticsearch.
+- Own feature delivery through automated testing, Azure releases and production incident analysis.
+- Apply Clean Architecture and dependency injection in backend development, with automated tests and code
+reviews.
+
+FORVIA HELLA
+Software Developer | Full-time
+Nov 2023 - Jul 2024 | Craiova, Romania | Hybrid
+
+- Developed C#, .NET and Python tools to automate repetitive automotive engineering tasks, including data
+processing, file handling and report generation.
+- Built internal desktop interfaces with C# and VBA; tested automotive control-system software and worked
+with engineering teams on validation workflows.
+
+Mecafix CNC
+Software Developer | Full-time
+Sep 2022 - Nov 2023 | Craiova, Romania
+
+- Built a C#/.NET Windows desktop application to automate production-preparation workflows in a
+metalworking and CNC environment.
+- Integrated Python scripts and command-line utilities for file processing, job validation, data parsing and
+report generation.
+- Added background tasks, logging, validation and error handling, with a graphical interface for configuring,
+running and monitoring workflows.
+
+TECHNICAL SKILLS
+Backend: C#, .NET 8, ASP.NET Core, REST APIs, Entity Framework Core, MediatR
+Data & messaging: SQL, PostgreSQL, Marten, Elasticsearch, Kafka, RabbitMQ, Azure Service Bus
+Frontend: Angular, React, Next.js, TypeScript, JavaScript, HTML, CSS
+Delivery: Microsoft Azure, Azure DevOps, Docker, Git, CI/CD, unit and integration testing
+
+ADDITIONAL EXPERIENCE
+
+Oryntech
+AI Solutions Engineer & Co-CTO | Part-time
+Mar 2026 - Present | Craiova, Romania | Remote
+
+- Co-lead technical architecture and develop React, Next.js and TypeScript interfaces for service-business
+workflows, integrating REST APIs, webhooks, CRM and booking systems.
+- Build Python services and voice and chat agent flows for customer conversations, lead follow-up and
+multi-channel messaging.
+- Implement context management, guardrails, human handoff and testing for LLM-powered workflows.
+
+SELECTED PROJECTS
+
+EShopMicroservices
+Independent reference project | github.com/AlbertoMitroi/EShopMicroservices
+
+- Built a .NET 8 and C# 12 e-commerce reference project using ASP.NET Core REST APIs, Entity Framework
+Core, Domain-Driven Design and CQRS.
+- Applied MediatR, FluentValidation and automated testing; used RabbitMQ, Redis, Docker and GitHub
+Actions with Azure-oriented deployment patterns.
+
+TopZonal
+Independent project | In development
+
+- Developing a local-services progressive web app with React, Next.js, TypeScript, tRPC and Prisma ORM.
+- Designing Azure components using Docker, Container Apps, Azure SQL, Blob Storage and Key Vault;
+prototyping semantic search and retrieval-augmented generation (RAG) with Azure OpenAI.
+
+ADDITIONAL TECHNICAL SKILLS
+Backend & design: LINQ, async/await, dependency injection, FluentValidation, xUnit, SOLID, Clean Architecture,
+event sourcing
+Project technologies: SQL Server, Redis, GitHub Actions, Tailwind CSS, tRPC, Prisma ORM
+Automation: Python, Windows desktop applications, CLI integration, background tasks, logging
+
+CERTIFICATIONS
+Microsoft Certified: Azure Developer Associate (AZ-204) | Microsoft | Mar 2026
+learn.microsoft.com/en-us/users/albertomitroi/credentials/42efc399d66b1e5c
+
+EDUCATION
+
+University of Craiova
+Master's degree, Artificial Intelligence and Applied Computing
+Aug 2026 - Present | Expected Jul 2028
+
+Bachelor of Engineering, Computer Science and Information Technology
+Sep 2022 - Jul 2026
+
+
