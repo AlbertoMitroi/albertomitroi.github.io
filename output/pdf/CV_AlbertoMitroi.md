@@ -68,15 +68,15 @@ Delivery: Microsoft Azure, Azure DevOps, Docker, Git, CI/CD, unit and integratio
 
 ### Oryntech
 
-AI Solutions Engineer & Co-CTO | Part-time
+AI Solutions Engineer & Co-CTO | Contract
 
-Mar 2026 - Present | Craiova, Romania | Remote
+Mar 2026 - Sep 2026 (6 months) | Craiova, Romania | Remote
 
-- Co-lead technical architecture and develop React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.
+- Co-led technical architecture and developed React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.
 
-- Build Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.
+- Built Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.
 
-- Implement context management, guardrails, human handoff and testing for LLM-powered workflows.
+- Implemented context management, guardrails, human handoff and testing for LLM-powered workflows.
 
 ## SELECTED PROJECTS
 

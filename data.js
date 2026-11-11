@@ -78,14 +78,15 @@ window.cvData = {
     {
       "company": "Oryntech",
       "companyLogo": "assets/oryntech-logosymbol-color.svg",
-      "role": "AI Solutions Engineer & Co-CTO | Part-time",
-      "period": "Mar 2026 - Present",
+      "role": "AI Solutions Engineer & Co-CTO | Contract",
+      "period": "Mar 2026 - Sep 2026",
+      "durationMonths": 6,
       "location": "Craiova, Romania (Remote)",
       "website": "https://www.oryntech.ai",
-      "intro": "Co-lead technical architecture and develop React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.",
+      "intro": "Co-led technical architecture and developed React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.",
       "bullets": [
-        "Build Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
-        "Implement context management, guardrails, human handoff and testing for LLM-powered workflows."
+        "Built Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
+        "Implemented context management, guardrails, human handoff and testing for LLM-powered workflows."
       ]
     },
     {
@@ -192,7 +193,7 @@ window.cvData = {
       "name": "Oryntech.AI",
       "logo": "assets/oryntech-logosymbol-color.svg",
       "url": "https://www.oryntech.ai",
-      "summary": "Product work from my part-time role at Oryntech: interfaces and integrations for service-business workflows.",
+      "summary": "Product work from my six-month contract at Oryntech, March to September 2026: interfaces and integrations for service-business workflows.",
       "gallery": [
         {
           "src": "assets/projects/oryntech/oryntech-01.png",
@@ -228,9 +229,9 @@ window.cvData = {
         }
       ],
       "bullets": [
-        "Co-lead technical architecture and develop React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.",
-        "Build Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
-        "Implement context management, guardrails, human handoff and testing for LLM-powered workflows."
+        "Co-led technical architecture and developed React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.",
+        "Built Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.",
+        "Implemented context management, guardrails, human handoff and testing for LLM-powered workflows."
       ],
       "stack": [
         "React",
@@ -339,7 +340,7 @@ window.cvData = {
     },
     {
       "title": "Frontend Development",
-      "summary": "Angular in production insurance software; React and Next.js in part-time product work and independent projects.",
+      "summary": "Angular in production insurance software; React and Next.js in contract product work and independent projects.",
       "items": [
         "Angular",
         "React",

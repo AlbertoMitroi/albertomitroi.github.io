@@ -237,6 +237,9 @@
 
   function buildCompanyDuration(roles) {
     if (!roles.length) return "";
+    if (roles.length === 1 && Number.isInteger(roles[0].durationMonths) && roles[0].durationMonths > 0) {
+      return formatDuration(roles[0].durationMonths);
+    }
     const latest = parsePeriodBounds(roles[0].period);
     const earliest = parsePeriodBounds(roles[roles.length - 1].period);
     const start = parseMonthYear(earliest.start);
@@ -922,7 +925,7 @@
       if (!button) return;
       button.addEventListener("click", () => {
         const link = document.createElement("a");
-        link.href = "assets/CV_AlbertoMitroi.pdf?v=20260911-1";
+        link.href = "assets/CV_AlbertoMitroi.pdf?v=20261111-2";
         link.download = "CV_AlbertoMitroi.pdf";
         document.body.appendChild(link);
         link.click();

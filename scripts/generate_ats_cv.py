@@ -51,9 +51,9 @@ MECAFIX = [
     'Added background tasks, logging, validation and error handling, with a graphical interface for configuring, running and monitoring workflows.',
 ]
 ORYNTECH = [
-    'Co-lead technical architecture and develop React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.',
-    'Build Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.',
-    'Implement context management, guardrails, human handoff and testing for LLM-powered workflows.',
+    'Co-led technical architecture and developed React, Next.js and TypeScript interfaces for service-business workflows, integrating REST APIs, webhooks, CRM and booking systems.',
+    'Built Python services and voice and chat agent flows for customer conversations, lead follow-up and multi-channel messaging.',
+    'Implemented context management, guardrails, human handoff and testing for LLM-powered workflows.',
 ]
 ESHOP = [
     'Built a .NET 8 and C# 12 e-commerce reference project using ASP.NET Core REST APIs, Entity Framework Core, Domain-Driven Design and CQRS.',
@@ -80,7 +80,7 @@ def content():
     blocks += [('section', 'TECHNICAL SKILLS')]
     blocks += [('skill', f'{k}: {v}') for k, v in SKILLS]
     blocks += [('break', ''), ('section', 'ADDITIONAL EXPERIENCE')]
-    blocks += job('Oryntech', 'AI Solutions Engineer & Co-CTO | Part-time', 'Mar 2026 - Present', 'Craiova, Romania | Remote', ORYNTECH)
+    blocks += job('Oryntech', 'AI Solutions Engineer & Co-CTO | Contract', 'Mar 2026 - Sep 2026 (6 months)', 'Craiova, Romania | Remote', ORYNTECH)
     blocks += [('section', 'SELECTED PROJECTS'), ('company', 'EShopMicroservices'),
                ('meta', 'Independent reference project | github.com/AlbertoMitroi/EShopMicroservices')]
     blocks += [('bullet', x) for x in ESHOP]

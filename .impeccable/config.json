@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-11T08:47:59.594Z",
+        "reason": "Codex: body.is-loading blochează intenționat scrollul la încărcare; galeria funcționează după eliminarea clasei, verificat în browser."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-11T08:47:59.614Z",
+        "reason": "Codex: fals pozitiv, umbra avatarului este pe fundalul deschis #f7f9ff al loaderului; pagina are fundal alb."
+      }
+    ]
+  }
+}
