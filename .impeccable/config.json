@@ -20,6 +20,24 @@
         ],
         "createdAt": "2026-11-11T08:47:59.614Z",
         "reason": "Codex: fals pozitiv, umbra avatarului este pe fundalul deschis #f7f9ff al loaderului; pagina are fundal alb."
+      },
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-11T08:51:05.795Z",
+        "reason": "Codex review: uppercase is limited to short section labels and the compact hero eyebrow, not body paragraphs. Existing typography was visually checked."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-11T08:51:05.810Z",
+        "reason": "Codex review: full-width section backgrounds intentionally have no horizontal padding; nested .container supplies centered gutters of at least 8px, with additional card padding. Text is not flush against a boundary."
       }
     ]
   }
