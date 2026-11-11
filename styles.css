@@ -1704,3 +1704,11 @@ body.project-gallery-open { overflow: hidden; }
     margin-left: auto !important;
   }
 }
+
+/* Reserve space until nearby sections are populated, keeping scroll targets stable. */
+.section-pending #certificationsList { min-height: 300px; }
+.section-pending #experienceList { min-height: 1000px; }
+.section-pending #projectsList { min-height: 1500px; }
+.section-pending #skillsList { min-height: 700px; }
+.section-pending #educationList { min-height: 300px; }
+.section-pending #contactActions { min-height: 160px; }

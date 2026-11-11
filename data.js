@@ -7,7 +7,7 @@ window.cvData = {
     "location": "Craiova, Romania",
     "workMode": "Romania / EU remote",
     "email": "mitroialbertoionut@gmail.com",
-    "image": "assets/profile.webp?v=20261111",
+    "image": "assets/profile.webp?v=20261111-4",
     "website": "https://albertomitroi.github.io/"
   },
   "siteMeta": {

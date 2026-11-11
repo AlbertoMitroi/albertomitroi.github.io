@@ -20,19 +20,6 @@
     return el;
   }
 
-  function initAppLoader() {
-    const loaderName = qs("#appLoaderName");
-    const loaderAvatar = qs("#appLoaderAvatar");
-    if (loaderName) loaderName.textContent = data.personal.preferredName || data.personal.name;
-    if (loaderAvatar) {
-      loaderAvatar.src = data.personal.image;
-      loaderAvatar.alt = `${data.personal.name} profile photo`;
-      loaderAvatar.loading = "eager";
-      loaderAvatar.decoding = "async";
-      loaderAvatar.setAttribute("fetchpriority", "high");
-    }
-  }
-
   function initSiteMeta() {
     const lastUpdatedEl = qs("#siteLastUpdated");
     if (!lastUpdatedEl) return;
@@ -55,39 +42,6 @@
     const fromData = String(data.siteMeta?.lastUpdated || "").trim();
     if (fromData) return fromData;
     return new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
-  }
-
-  function waitForImageReady(image) {
-    if (!image) return Promise.resolve();
-    if (typeof image.decode === "function") {
-      return image.decode().catch(() => {});
-    }
-    if (image.complete) return Promise.resolve();
-    return new Promise((resolve) => {
-      image.addEventListener("load", resolve, { once: true });
-      image.addEventListener("error", resolve, { once: true });
-    });
-  }
-
-  async function waitForAssetsReady() {
-    const criticalImageSelectors = ["#appLoaderAvatar", "#brandAvatar", "#heroImage"];
-    const criticalImages = criticalImageSelectors
-      .map((selector) => qs(selector))
-      .filter(Boolean);
-    await Promise.all(criticalImages.map((image) => waitForImageReady(image)));
-    if (document.fonts && document.fonts.ready) {
-      await document.fonts.ready;
-    }
-  }
-
-  async function revealPageWhenReady() {
-    const loader = qs("#appLoader");
-    await waitForAssetsReady();
-    document.body.classList.remove("is-loading");
-    document.body.classList.add("is-ready");
-    if (loader) {
-      loader.setAttribute("aria-hidden", "true");
-    }
   }
 
   function safeLink(url) {
@@ -560,7 +514,7 @@
     });
   }
 
-  function initSidebarSections() {
+  function initCertifications() {
     const certifications = qs("#certificationsList");
     data.certifications.forEach((cert) => {
       const item = createEl("article", "stack-item cert-card");
@@ -661,6 +615,9 @@
       });
     }
 
+  }
+
+  function initEducation() {
     const education = qs("#educationList");
     data.education.forEach((edu) => {
       const item = createEl("article", "stack-item");
@@ -671,6 +628,9 @@
       education.appendChild(item);
     });
 
+  }
+
+  function initContact() {
     const contacts = qs("#contactActions");
     const contactIconFallback = {
       email: "assets/gmail-svgrepo-com.svg",
@@ -1128,31 +1088,71 @@
     headings.forEach((heading) => observer.observe(heading));
   }
 
-  async function init() {
-    document.body.classList.add("is-loading");
-    initAppLoader();
+  const deferredSections = new Map([
+    ["certifications", initCertifications],
+    ["experience", initExperience],
+    ["projects", initProjects],
+    ["skills", initSkills],
+    ["education", initEducation],
+    ["contact", initContact]
+  ]);
 
-    try {
-      initSiteMeta();
-      initHero();
-      initAbout();
-      initExperience();
-      initProjects();
-      initSkills();
-      initSidebarSections();
-      initResume();
-      bindActions();
-      initMobileMenu();
-      initNavigation();
-      initSectionHeadingReveal();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      await revealPageWhenReady();
+  function prepareSection(id) {
+    const render = deferredSections.get(id);
+    if (!render) return;
+    render();
+    deferredSections.delete(id);
+    document.getElementById(id).classList.remove("section-pending");
+  }
+
+  function prepareSectionsThrough(id) {
+    if (!document.querySelector(`main > section[id="${CSS.escape(id)}"]`)) return;
+    for (const section of document.querySelectorAll("main > section[id]")) {
+      prepareSection(section.id);
+      if (section.id === id) break;
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    void init();
-  });
+  function initDeferredSections() {
+    if (!("IntersectionObserver" in window)) {
+      deferredSections.forEach((render, id) => prepareSection(id));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        prepareSection(entry.target.id);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "500px 0px" });
+    deferredSections.forEach((render, id) => {
+      const section = document.getElementById(id);
+      section.classList.add("section-pending");
+      observer.observe(section);
+    });
+    // Internal links must target their final position after earlier sections render.
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (link) prepareSectionsThrough(link.hash.slice(1));
+    }, true);
+    window.addEventListener("hashchange", () => prepareSectionsThrough(location.hash.slice(1)));
+    if (location.hash) prepareSectionsThrough(location.hash.slice(1));
+    window.addEventListener("beforeprint", () => {
+      deferredSections.forEach((render, id) => prepareSection(id));
+      initResume();
+    });
+  }
+
+  function init() {
+    initSiteMeta();
+    initHero();
+    initAbout();
+    initDeferredSections();
+    bindActions();
+    initMobileMenu();
+    initNavigation();
+    initSectionHeadingReveal();
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
 })();
