@@ -118,18 +118,19 @@ window.cvData = {
   "projects": [
     {
       "name": "examini.ro",
+      "logo": "assets/examini-logo.svg",
       "url": "https://examini.ro/",
-      "summary": "Platformă de pregătire pentru Rezidențiat medicină, cu materie organizată, grile explicate și urmărirea progresului.",
+      "summary": "A learning platform for Romania's medical residency exam, with structured study materials, explained practice questions and progress tracking.",
       "gallery": [
         {
           "src": "assets/projects/examini/examini-01.webp",
-          "alt": "Pagina examini.ro, cu asistentul Mino și prezentarea platformei de învățare"
+          "alt": "Examini homepage featuring Mino, the AI study assistant, and an overview of the learning platform"
         }
       ],
       "bullets": [
-        "Lecții și grile organizate pe capitole, cu explicații și un parcurs clar de învățare.",
-        "Mino AI ajută la înțelegerea noțiunilor și îndrumă utilizatorul către lecțiile relevante.",
-        "Minopolis transformă progresul în învățare într-un oraș care crește, cu echipe și competiții."
+        "Lessons and practice questions organized by chapter, with explanations and a clear study path.",
+        "Mino AI helps learners understand concepts and find relevant lessons.",
+        "Minopolis turns learning progress into a growing virtual city, with teams and competitions."
       ],
       "stack": ["EdTech", "Mino AI", "Minopolis"]
     },
