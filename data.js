@@ -7,12 +7,12 @@ window.cvData = {
     "location": "Craiova, Romania",
     "workMode": "Romania / EU remote",
     "email": "mitroialbertoionut@gmail.com",
-    "image": "assets/profile.webp",
+    "image": "assets/profile.webp?v=20261111",
     "website": "https://albertomitroi.github.io/"
   },
   "siteMeta": {
     "siteUrl": "https://albertomitroi.github.io/",
-    "lastUpdated": "September 2026"
+    "lastUpdated": "November 2026"
   },
   "heroFacts": [
     "C# / .NET since 2022",
@@ -115,6 +115,23 @@ window.cvData = {
     }
   ],
   "projects": [
+    {
+      "name": "examini.ro",
+      "url": "https://examini.ro/",
+      "summary": "Platformă de pregătire pentru Rezidențiat medicină, cu materie organizată, grile explicate și urmărirea progresului.",
+      "gallery": [
+        {
+          "src": "assets/projects/examini/examini-01.webp",
+          "alt": "Pagina examini.ro, cu asistentul Mino și prezentarea platformei de învățare"
+        }
+      ],
+      "bullets": [
+        "Lecții și grile organizate pe capitole, cu explicații și un parcurs clar de învățare.",
+        "Mino AI ajută la înțelegerea noțiunilor și îndrumă utilizatorul către lecțiile relevante.",
+        "Minopolis transformă progresul în învățare într-un oraș care crește, cu echipe și competiții."
+      ],
+      "stack": ["EdTech", "Mino AI", "Minopolis"]
+    },
     {
       "name": "EShopMicroservices",
       "logo": "assets/github-142-svgrepo-com.svg",

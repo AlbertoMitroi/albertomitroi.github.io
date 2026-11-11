@@ -469,7 +469,7 @@
     mainImage.loading = "lazy";
     mainImage.decoding = "async";
     main.appendChild(mainImage);
-    const countBadge = createEl("span", "project-gallery-count", `${images.length} photos`);
+    const countBadge = createEl("span", "project-gallery-count", images.length === 1 ? "1 photo" : `${images.length} photos`);
     const extraPhotos = Math.max(0, images.length - 1);
     const mobileLabel = extraPhotos > 0
       ? `View more photos +${extraPhotos}`
@@ -497,9 +497,9 @@
       thumb.addEventListener("click", () => openProjectGallery(project.name, images, index));
       thumbs.appendChild(thumb);
     });
-    gallery.appendChild(thumbs);
+    if (images.length > 1) gallery.appendChild(thumbs);
 
-    const viewAll = createEl("button", "project-gallery-view-all", `View all photos (${images.length})`);
+    const viewAll = createEl("button", "project-gallery-view-all", images.length === 1 ? "View photo" : `View all photos (${images.length})`);
     viewAll.type = "button";
     viewAll.addEventListener("click", () => openProjectGallery(project.name, images, 0));
     gallery.appendChild(viewAll);
